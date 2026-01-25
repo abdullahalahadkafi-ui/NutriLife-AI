@@ -742,26 +742,45 @@ function downloadReportCard() {
 
 // ২. স্মার্ট শেয়ার ফাংশন (মোবাইল অ্যাপ ফ্রেন্ডলি)
 async function shareResult() {
+    const card = document.getElementById('capture-card'); // তোমার রিপোর্ট কার্ডের আইডি
     const bmi = document.getElementById('bmi-score').innerText;
     const status = document.getElementById('bmi-status').innerText;
-    const shareUrl = window.location.href;
-    const shareText = `আমার NutriLife AI রিপোর্ট: BMI ${bmi} (${status})। আপনিও চেক করুন: ${shareUrl}`;
+    const shareUrl = "https://nutrilife-ai.onrender.com"; // তোমার সাইটের লিঙ্ক
+    const btn = event.currentTarget;
 
-    // যদি মোবাইলের নেটিভ শেয়ার সাপোর্ট করে (Android/iOS)
-    if (navigator.share) {
-        try {
+    try {
+        btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> শেয়ারিং হচ্ছে...";
+        
+        // ১. html2canvas দিয়ে কার্ডটিকে ছবিতে রূপান্তর করা
+        const canvas = await html2canvas(card, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: "#ffffff"
+        });
+
+        // ২. ক্যানভাসকে ফাইল বা ব্লব (Blob) এ রূপান্তর করা
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+        const file = new File([blob], "NutriLife_Report.png", { type: "image/png" });
+
+        // ৩. চেক করা ব্রাউজারে ফাইল শেয়ারিং সাপোর্ট করে কি না (মূলত মোবাইলে কাজ করবে)
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
             await navigator.share({
-                title: 'NutriLife AI Report',
-                text: shareText,
+                files: [file],
+                title: 'NutriLife AI Health Report',
+                text: `আমার স্বাস্থ্য স্কোর (BMI) হলো ${bmi} (${status})। আপনিও চেক করুন আপনার শরীর কেমন আছে!`,
                 url: shareUrl,
             });
-        } catch (err) {
-            console.log("Share failed:", err);
+            btn.innerHTML = "<i class='fab fa-facebook'></i> শেয়ার করুন";
+        } else {
+            // ৪. পিসি বা পুরনো ব্রাউজারের জন্য সাধারণ সিস্টেম
+            const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
+            alert("আপনার ফোনে সরাসরি ছবি শেয়ার সাপোর্ট করছে না। দয়া করে রিপোর্ট কার্ডটি আগে 'সেভ' করে নিন, তারপর এই লিঙ্কে গিয়ে শেয়ার করুন।");
+            window.open(fbUrl, '_blank');
+            btn.innerHTML = "<i class='fab fa-facebook'></i> শেয়ার করুন";
         }
-    } else {
-        // পিসি বা সাধারণ ব্রাউজারের জন্য ফেসবুক শারার
-        const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}&quote=${encodeURIComponent(shareText)}`;
-        window.open(fbUrl, '_blank');
+    } catch (err) {
+        console.error("Sharing failed", err);
+        btn.innerHTML = "<i class='fab fa-facebook'></i> শেয়ার করুন";
     }
 }
     </script>
