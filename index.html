@@ -7,12 +7,18 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <!-- Open Graph Tags -->
-<meta property="og:title" content="NutriLife AI - আপনার পার্সোনাল হেলথ রিপোর্ট">
-<meta property="og:description" content="আমি আমার স্বাস্থ্য বিশ্লেষণ করেছি, আপনিও আপনার বিএমআই এবং ডায়েট প্ল্যান দেখে নিন ফ্রিতে!">
-<meta property="og:image" content="https://তোমার-লিঙ্ক/cover-photo.jpg"> <!-- তোমার কভার ফটোর লিঙ্ক -->
+<!-- Facebook & Social Media Optimization -->
+<meta property="og:title" content="NutriLife AI - আপনার ব্যক্তিগত হেলথ ও ডায়েট গাইড">
+<meta property="og:description" content="আমি আমার স্বাস্থ্য বিশ্লেষণ করেছি, আপনিও আপনার BMI এবং ডায়েট প্ল্যান দেখে নিন ফ্রিতে!">
+<meta property="og:image" content="https://nutrilife-ai.onrender.com/cover.jpg">
 <meta property="og:url" content="https://nutrilife-ai.onrender.com">
 <meta property="og:type" content="website">
+
+<!-- Twitter Optimization -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NutriLife AI">
+<meta name="twitter:description" content="আপনার স্বাস্থ্য স্কোর দেখে নিন এক ক্লিকেই।">
+<meta name="twitter:image" content="https://nutrilife-ai.onrender.com/cover.jpg">
 
 
     <title>NutriLife AI | আপনার ব্যক্তিগত এআই ডায়েট ও হেলথ প্ল্যানার</title>
@@ -57,6 +63,7 @@ nav {
     padding: 15px 0;
     position: sticky; top: 0; z-index: 2000;
     border-bottom: 1px solid var(--border-color);
+    padding: 15px 30px;
 }
 .nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
 .nav-links-desktop { display: flex; gap: 20px; list-style: none; }
@@ -321,6 +328,7 @@ nav {
             <li><a href="about.html">পরিচিতি</a></li>
             <li><a href="privacy.html">প্রাইভেসি</a></li>
             <li><a href="contact.html">যোগাযোগ</a></li>
+            <li><a href="blog.html">স্বাস্থ্য টিপস</a></li>
         </ul>
     </div>
 </nav>
@@ -335,6 +343,7 @@ nav {
         <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user"></i> আমাদের সম্পর্কে</a></li>
         <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-user-shield"></i> প্রাইভেসি পলিসি</a></li>
         <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-envelope"></i> যোগাযোগ</a></li>
+        <li><a href="blog.html"><i class="fas fa-book-medical"></i> স্বাস্থ্য টিপস</a></li>
     </ul>
     <div class="sidebar-footer">
         <p>NutriLife AI v1.0</p>
@@ -428,7 +437,7 @@ nav {
 
 <!-- বাটনগুলো কার্ডের বাইরে থাকবে -->
 <div style="max-width: 400px; margin: 20px auto;">
-    <button class="btn-sm" style="background: #10b981; width: 100%; margin-bottom: 10px;" onclick="downloadReportCard()">
+    <button class="btn-sm" style="background: #10b981; width: 100%; margin-bottom: 10px; padding: 12px; border-radius: 20px; color: #ffffff; font-weight: 600;" onclick="downloadReportCard()">
         <i class="fas fa-download"></i> রিপোর্ট কার্ড গ্যালারিতে সেভ করুন
     </button>
     
@@ -740,47 +749,47 @@ function downloadReportCard() {
     });
 }
 
-// ২. স্মার্ট শেয়ার ফাংশন (মোবাইল অ্যাপ ফ্রেন্ডলি)
 async function shareResult() {
-    const card = document.getElementById('capture-card'); // তোমার রিপোর্ট কার্ডের আইডি
+    const card = document.getElementById('capture-card');
     const bmi = document.getElementById('bmi-score').innerText;
     const status = document.getElementById('bmi-status').innerText;
-    const shareUrl = "https://nutrilife-ai.onrender.com"; // তোমার সাইটের লিঙ্ক
+    const shareUrl = "https://nutrilife-ai.onrender.com";
     const btn = event.currentTarget;
+    const originalHTML = btn.innerHTML; // আগের বাটন টেক্সট সেভ রাখা
 
     try {
-        btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> শেয়ারিং হচ্ছে...";
-        
-        // ১. html2canvas দিয়ে কার্ডটিকে ছবিতে রূপান্তর করা
+        btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> প্রসেসিং...";
+        btn.disabled = true; // ক্লিক করা বন্ধ রাখা
+
         const canvas = await html2canvas(card, {
             scale: 2,
             useCORS: true,
             backgroundColor: "#ffffff"
         });
 
-        // ২. ক্যানভাসকে ফাইল বা ব্লব (Blob) এ রূপান্তর করা
         const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
-        const file = new File([blob], "NutriLife_Report.png", { type: "image/png" });
+        const file = new File([blob], "Health_Report.png", { type: "image/png" });
 
-        // ৩. চেক করা ব্রাউজারে ফাইল শেয়ারিং সাপোর্ট করে কি না (মূলত মোবাইলে কাজ করবে)
+        // মোবাইল ফোনের জন্য স্মার্ট শেয়ার
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
             await navigator.share({
                 files: [file],
-                title: 'NutriLife AI Health Report',
-                text: `আমার স্বাস্থ্য স্কোর (BMI) হলো ${bmi} (${status})। আপনিও চেক করুন আপনার শরীর কেমন আছে!`,
+                title: 'NutriLife AI রিপোর্ট',
+                text: `আমার BMI স্কোর ${bmi} (${status})! আপনিও চেক করুন আপনার শরীর কেমন আছে।`,
                 url: shareUrl,
             });
-            btn.innerHTML = "<i class='fab fa-facebook'></i> শেয়ার করুন";
         } else {
-            // ৪. পিসি বা পুরনো ব্রাউজারের জন্য সাধারণ সিস্টেম
+            // পিসি বা ব্রাউজারের জন্য সাধারণ লিঙ্ক শেয়ার
             const fbUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(shareUrl)}`;
-            alert("আপনার ফোনে সরাসরি ছবি শেয়ার সাপোর্ট করছে না। দয়া করে রিপোর্ট কার্ডটি আগে 'সেভ' করে নিন, তারপর এই লিঙ্কে গিয়ে শেয়ার করুন।");
             window.open(fbUrl, '_blank');
-            btn.innerHTML = "<i class='fab fa-facebook'></i> শেয়ার করুন";
+            alert("সরাসরি ছবি শেয়ার পিসিতে সাপোর্ট করে না। দয়া করে রিপোর্টটি ডাউনলোড করে তারপর ফেসবুকে পোস্ট করুন।");
         }
     } catch (err) {
-        console.error("Sharing failed", err);
-        btn.innerHTML = "<i class='fab fa-facebook'></i> শেয়ার করুন";
+        console.log("Error:", err);
+    } finally {
+        // কাজ শেষ হলে বা এরর আসলে বাটন ঠিক করা
+        btn.innerHTML = originalHTML;
+        btn.disabled = false;
     }
 }
     </script>
