@@ -431,10 +431,10 @@ nav {
             <a href="#" class="fb-share" onclick="shareToFB()">
                 <i class="fab fa-facebook"></i> ফেসবুকে শেয়ার করুন
             </a>
-            <button class="btn-sm" style="background: #10b981; margin-top: 10px;" onclick="downloadCard()">
-    <i class="fas fa-download"></i> রিপোর্ট কার্ড ডাউনলোড করুন
-</button>
         </div>
+        <button class="btn-sm" style="background: #10b981; margin-top: 15px; width: 100%;" onclick="downloadReport()">
+    <i class="fas fa-download"></i> রিপোর্ট কার্ড সেভ করুন
+</button>
         
 
         <!-- বিজ্ঞাপনের জায়গা ১: ফর্মের ঠিক নিচে -->
@@ -714,17 +714,41 @@ function showModal(type) {
 function closeModal() { document.getElementById('modal').style.display = "none"; }
 
 
-function downloadCard() {
-    const reportArea = document.getElementById('result-portal'); // তোমার রেজাল্ট সেকশনের আইডি
+function downloadReport() {
+    // ১. যে অংশটুকু ছবি হবে তার আইডি (নিশ্চিত করো তোমার রেজাল্ট বক্সের আইডি 'result-area')
+    const reportElement = document.getElementById('result-area'); 
     
-    html2canvas(reportArea, {
-        backgroundColor: "#0a0c10", // তোমার সাইটের ব্যাকগ্রাউন্ড কালার
-        scale: 2 // ছবির কোয়ালিটি বাড়াতে
+    // ২. বাটনের টেক্সট পরিবর্তন করা (ইউজারকে বোঝানোর জন্য যে কাজ হচ্ছে)
+    const btn = event.currentTarget;
+    const originalText = btn.innerHTML;
+    btn.innerHTML = "প্রসেসিং হচ্ছে...";
+    btn.disabled = true;
+
+    // ৩. html2canvas ম্যাজিক
+    html2canvas(reportElement, {
+        useCORS: true, // বাইরের কোনো ছবি থাকলে তা লোড করার জন্য
+        scale: 2,      // ছবির কোয়ালিটি ভালো করার জন্য
+        backgroundColor: "#f8fafc" // ছবির ব্যাকগ্রাউন্ড কালার (তোমার সাইটের কালার দাও)
     }).then(canvas => {
+        // ৪. ছবি তৈরি করে ডাউনলোড করা
+        const imageData = canvas.toDataURL("image/png");
         const link = document.createElement('a');
-        link.download = uName + '_Health_Report.png'; // ইউজারের নামে সেভ হবে
-        link.href = canvas.toDataURL();
+        
+        // ইউজারের নাম দিয়ে ফাইল সেভ করা
+        const fileName = document.getElementById('disp-name').innerText || "My";
+        link.download = fileName + "_Health_Report.png";
+        
+        link.href = imageData;
         link.click();
+
+        // ৫. বাটন আগের অবস্থায় ফিরিয়ে আনা
+        btn.innerHTML = originalText;
+        btn.disabled = false;
+    }).catch(err => {
+        console.error("Download Error: ", err);
+        alert("দুঃখিত! আপনার ফোনে এই মুহূর্তে ডাউনলোড কাজ করছে না। একটি স্ক্রিনশট নিয়ে রাখুন।");
+        btn.innerHTML = originalText;
+        btn.disabled = false;
     });
 }
     </script>
