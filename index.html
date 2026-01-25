@@ -4,8 +4,17 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3198247054309158"
      crossorigin="anonymous"></script>
      
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- Open Graph Tags -->
+<meta property="og:title" content="NutriLife AI - আপনার পার্সোনাল হেলথ রিপোর্ট">
+<meta property="og:description" content="আমি আমার স্বাস্থ্য বিশ্লেষণ করেছি, আপনিও আপনার বিএমআই এবং ডায়েট প্ল্যান দেখে নিন ফ্রিতে!">
+<meta property="og:image" content="https://তোমার-লিঙ্ক/cover-photo.jpg"> <!-- তোমার কভার ফটোর লিঙ্ক -->
+<meta property="og:url" content="https://nutrilife-ai.onrender.com">
+<meta property="og:type" content="website">
+
+
     <title>NutriLife AI | আপনার ব্যক্তিগত এআই ডায়েট ও হেলথ প্ল্যানার</title>
     
     <!-- Fonts & Icons -->
@@ -26,6 +35,9 @@
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        input, button, select, textarea {
+    font-family: 'Hind Siliguri', sans-serif !important;
+}
         
         body { 
             font-family: var(--hind); 
@@ -37,11 +49,69 @@
         }
 
         /* --- NAVIGATION --- */
-        nav { 
-            background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px);
-            padding: 15px 6%; display: flex; justify-content: space-between; align-items: center; 
-            position: fixed; width: 100%; top: 0; z-index: 2000; border-bottom: 1px solid var(--border-color);
-        }
+        /* Navbar Styling */
+/* Navbar Desktop */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: sticky; top: 0; z-index: 2000;
+    border-bottom: 1px solid var(--border-color);
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.nav-links-desktop { display: flex; gap: 20px; list-style: none; }
+.nav-links-desktop a { color: #475569; text-decoration: none; font-weight: 600; font-size: 15px; }
+
+/* Mobile Menu Icon */
+.menu-icon { display: none; cursor: pointer; font-size: 24px; color: var(--medical-blue); }
+
+/* Sidebar Styling (Slide from Right) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px; /* ডিফল্টভাবে স্ক্রিনের বাইরে থাকবে */
+    width: 280px;
+    height: 100vh;
+    background: white;
+    z-index: 3000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar.active { right: 0; } /* স্লাইড করে ভেতরে আসার জন্য */
+
+.sidebar-header { text-align: left; margin-bottom: 30px; }
+.close-btn { font-size: 28px; color: #ef4444; cursor: pointer; }
+
+.sidebar-links { list-style: none; padding: 0; }
+.sidebar-links li { margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+.sidebar-links a { 
+    text-decoration: none; color: var(--dark-navy); font-size: 18px; 
+    font-weight: 600; display: flex; align-items: center; gap: 15px;
+}
+.sidebar-links a i { color: var(--medical-blue); width: 25px; }
+
+.sidebar-footer { margin-top: auto; text-align: center; font-size: 12px; color: #94a3b8; }
+
+/* Overlay Background */
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 2500;
+    display: none;
+    backdrop-filter: blur(3px);
+}
+.overlay.active { display: block; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-links-desktop { display: none; }
+    .menu-icon { display: block; }
+}
+
+
+        
         .logo { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: var(--medical-blue); text-decoration: none; display: flex; align-items: center; gap: 8px; }
         .nav-links { display: flex; gap: 15px; }
         .nav-links a { color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s; cursor: pointer; }
@@ -54,13 +124,48 @@
             border: 1px solid var(--border-color);
             max-width: 650px; width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,0.05);
         }
+        .hero-card h1 { font-size: 28px; margin-bottom: 15px; font-weight: 700; color: var(--dark-navy); text-align: center;}
+        .hero-card span{
+            color: var(--health-green);
+        }
+        .hero-card p { font-size: 15px; color: #64748b; margin-bottom: 30px;text-align: center; }
+        
         .hero h1 { font-size: 28px; margin-bottom: 15px; font-weight: 700; color: var(--dark-navy); }
         .hero h1 span { color: var(--health-green); }
         .hero p { font-size: 15px; color: #64748b; margin-bottom: 30px; }
 
         /* --- INPUT FORM --- */
-        .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; text-align: left; margin-bottom: 20px; }
-        .form-group { margin-bottom: 15px; }
+        
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* দুই কলামে থাকবে */
+    gap: 15px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.hero-card {
+    background: var(--pure-white);
+    padding: 40px 30px;
+    border-radius: 30px;
+    max-width: 600px;
+    margin: auto;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.05);
+}
+
+/* মোবাইল রেসপন্সিভ */
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr; /* মোবাইলে সব এক লাইনে চলে আসবে */
+    }
+}
+
+
+
+
+
         label { display: block; font-size: 13px; font-weight: 600; margin-bottom: 5px; color: #475569; }
         input, select { 
             width: 100%; padding: 12px; background: #f1f5f9; 
@@ -125,12 +230,23 @@
 
         input:focus { border-color: var(--medical-blue); background: #fff; }
 
-        .btn-generate { 
-            background: linear-gradient(135deg, var(--medical-blue), var(--health-green)); 
-            color: white; padding: 15px 40px; border: none; border-radius: 50px; 
-            font-size: 18px; font-weight: 700; cursor: pointer; transition: 0.4s; 
-            width: 100%; box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
-        }
+    .btn-generate {
+    font-family: 'Hind Siliguri', sans-serif !important; /* এটি ফন্ট ফিক্স করবে */
+    /* বাকি কোড আগের মতোই থাকবে */
+    background: linear-gradient(135deg, var(--medical-blue), var(--health-green));
+    color: white;
+    padding: 15px 40px;
+    border: none;
+    border-radius: 50px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    transition: 0.4s;
+    box-shadow: 0 10px 20px rgba(14, 165, 233, 0.2);
+}
+
+
         .btn-generate:hover { transform: translateY(-3px); box-shadow: 0 15px 30px rgba(14, 165, 233, 0.4); }
 
         /* --- SCANNING SIMULATION --- */
@@ -190,55 +306,98 @@
 </head>
 <body>
 
-    <nav>
-        <a href="#" class="logo"><i class="fas fa-heartbeat"></i> NutriLife AI</a>
-        <div class="nav-links">
-            <a href="about.html">আমাদের সম্পর্কে</a>
-            <a href="privacy.html">প্রাইভেসি পলিসি</a>
-            <a href="contact.html">যোগাযোগ</a>
+    <!-- Navigation -->
+<nav>
+    <div class="container nav-wrapper">
+        <a href="index.html" class="logo">
+            <i class="fas fa-heartbeat"></i> NutriLife AI
+        </a>
+        <!-- মেনু আইকন -->
+        <div class="menu-icon" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
         </div>
-    </nav>
+        <!-- পিসির জন্য মেনু (মোবাইলে হাইড থাকবে) -->
+        <ul class="nav-links-desktop">
+            <li><a href="about.html">পরিচিতি</a></li>
+            <li><a href="privacy.html">প্রাইভেসি</a></li>
+            <li><a href="contact.html">যোগাযোগ</a></li>
+        </ul>
+    </div>
+</nav>
 
-    <!-- Home Screen -->
-    <section class="hero" id="home-screen">
-        <div class="hero-card animate__animated animate__fadeInDown">
-            <h1>আপনার <span>ডায়েট ও হেলথ</span> প্ল্যানার</h1>
-            <p>আপনার শারীরিক তথ্য প্রদান করুন, আমাদের এআই আপনার জন্য সেরা স্বাস্থ্য রুটিন তৈরি করে দেবে।</p>
-            
-            <div class="form-group" style="text-align: left;">
-                <label>আপনার নাম</label>
-                <input type="text" id="nameInput" placeholder="যেমন: হাসিব আহমেদ">
-            </div>
+<!-- মোবাইল সাইডবার (ডান পাশ থেকে আসবে) -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
+    </div>
+    <ul class="sidebar-links">
+        <li><a href="index.html" onclick="toggleSidebar()"><i class="fas fa-home"></i> হোম</a></li>
+        <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user"></i> আমাদের সম্পর্কে</a></li>
+        <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-user-shield"></i> প্রাইভেসি পলিসি</a></li>
+        <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-envelope"></i> যোগাযোগ</a></li>
+    </ul>
+    <div class="sidebar-footer">
+        <p>NutriLife AI v1.0</p>
+    </div>
+</div>
 
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>উচ্চতা (সে.মি.)</label>
-                    <input type="number" id="heightInput" placeholder="যেমন: ১৭০">
-                </div>
-                <div class="form-group">
-                    <label>ওজন (কেজি)</label>
-                    <input type="number" id="weightInput" placeholder="যেমন: ৬৫">
-                </div>
-            </div>
-
-            <div class="form-grid">
-                <div class="form-group">
-                    <label>আপনার বয়স</label>
-                    <input type="number" id="ageInput" placeholder="যেমন: ২০">
-                </div>
-                <div class="form-group">
-                    <label>লিঙ্গ</label>
-                    <select id="gender">
-                        <option value="male">পুরুষ</option>
-                        <option value="female">নারী</option>
-                    </select>
-                </div>
-            </div>
-
-            <button class="btn-generate" onclick="startHealthScan()">স্বাস্থ্য বিশ্লেষণ করুন <i class="fas fa-magic"></i></button>
+<!-- Home Screen -->
+<section id="home-screen">
+    <div class="hero-card">
+        <h1>আপনার <span>ডায়েট ও হেলথ</span> প্ল্যানার</h1>
+        <p>আপনার শারীরিক তথ্য প্রদান করুন, আমাদের এআই আপনার জন্য সেরা স্বাস্থ্য রুটিন তৈরি করে দেবে।</p>
+        
+        <div class="form-group">
+            <label>আপনার নাম</label>
+            <input type="text" id="nameInput" placeholder="নাম লিখুন">
         </div>
-    </section>
 
+        <div class="form-group">
+            <label>উচ্চতার একক</label>
+            <select id="heightUnit" onchange="toggleHeightInputs()">
+                <option value="ft">ফুট + ইঞ্চি</option>
+                <option value="cm">সেন্টিমিটার (cm)</option>
+                <option value="m">মিটার (Meter)</option>
+            </select>
+        </div>
+
+        <!-- Feet/Inch -->
+        <div id="ftInputGroup" class="form-grid">
+            <div class="form-group"><input type="number" id="ftInput" placeholder="ফুট"></div>
+            <div class="form-group"><input type="number" id="inchInput" placeholder="ইঞ্চি"></div>
+        </div>
+
+        <!-- CM -->
+        <div id="cmInputGroup" style="display:none;" class="form-group">
+            <input type="number" id="cmInput" placeholder="সেন্টিমিটার">
+        </div>
+
+        <!-- Meter -->
+        <div id="mInputGroup" style="display:none;" class="form-group">
+            <input type="number" id="mInput" placeholder="মিটার">
+        </div>
+
+        <div class="form-grid">
+            <div class="form-group">
+                <label>ওজন (কেজি)</label>
+                <input type="number" id="weightInput" placeholder="ওজন">
+            </div>
+            <div class="form-group">
+                <label>বয়স</label>
+                <input type="number" id="ageInput" placeholder="বয়স">
+            </div>
+        </div>
+        <div class="form-group" style="text-align: left;">
+    <label>লিঙ্গ (Gender)</label>
+    <select id="genderInput">
+        <option value="male">পুরুষ (Male)</option>
+        <option value="female">নারী (Female)</option>
+    </select>
+</div>
+
+        <button class="btn-generate" onclick="startHealthScan()">স্বাস্থ্য বিশ্লেষণ করুন</button>
+    </div>
+</section>
 
     <!-- Loading -->
     <section id="loading-portal">
@@ -272,7 +431,11 @@
             <a href="#" class="fb-share" onclick="shareToFB()">
                 <i class="fab fa-facebook"></i> ফেসবুকে শেয়ার করুন
             </a>
+            <button class="btn-sm" style="background: #10b981; margin-top: 10px;" onclick="downloadCard()">
+    <i class="fas fa-download"></i> রিপোর্ট কার্ড ডাউনলোড করুন
+</button>
         </div>
+        
 
         <!-- বিজ্ঞাপনের জায়গা ১: ফর্মের ঠিক নিচে -->
 <div class="ad-unit">
@@ -443,27 +606,62 @@
     </footer>
 
     <script>
-        function startHealthScan() {
-            const name = document.getElementById('nameInput').value.trim();
-            const h = document.getElementById('heightInput').value;
-            const w = document.getElementById('weightInput').value;
+       // সাইডবার মেনু টগল
+function toggleSidebar() {
+    document.getElementById('sidebar').classList.toggle('active');
+    document.getElementById('overlay').classList.toggle('active');
+}
 
-            if (!name || !h || !w) {
-                alert("দয়া করে সব তথ্য প্রদান করুন!");
-                return;
-            }
+// ইনপুট বক্স পরিবর্তন
+function toggleHeightInputs() {
+    const unit = document.getElementById('heightUnit').value;
+    document.getElementById('ftInputGroup').style.display = (unit === 'ft') ? 'grid' : 'none';
+    document.getElementById('cmInputGroup').style.display = (unit === 'cm') ? 'block' : 'none';
+    document.getElementById('mInputGroup').style.display = (unit === 'm') ? 'block' : 'none';
+}
 
-            document.getElementById('home-screen').style.display = "none";
-            document.getElementById('loading-portal').style.display = "block";
+// মূল ফাংশন
+function startHealthScan() {
+    console.log("Analysis Started...");
 
-            setTimeout(() => {
-                document.getElementById('loading-portal').style.display = "none";
-                document.getElementById('result-area').style.display = "block";
-                processResult(name, h, w);
-            }, 3000);
-        }
+    const name = document.getElementById('nameInput').value.trim();
+    const weight = parseFloat(document.getElementById('weightInput').value);
+    const age = document.getElementById('ageInput').value; // বয়স
+    const gender = document.getElementById('genderInput').value; // লিঙ্গ (Male/Female)
+    const unit = document.getElementById('heightUnit').value;
+    let heightInCm = 0;
 
-        function processResult(name, h, w) {
+    // উচ্চতা কনভার্ট লজিক
+    if (unit === 'ft') {
+        const ft = parseFloat(document.getElementById('ftInput').value) || 0;
+        const inch = parseFloat(document.getElementById('inchInput').value) || 0;
+        heightInCm = (ft * 30.48) + (inch * 2.54);
+    } else if (unit === 'cm') {
+        heightInCm = parseFloat(document.getElementById('cmInput').value) || 0;
+    } else if (unit === 'm') {
+        heightInCm = (parseFloat(document.getElementById('mInput').value) || 0) * 100;
+    }
+
+    // সব ঘর পূরণ আছে কি না চেক
+    if (!name || isNaN(weight) || heightInCm <= 0 || !age) {
+        alert("দয়া করে নাম, ওজন, বয়স এবং উচ্চতা সঠিকভাবে দিন!");
+        return;
+    }
+
+    // স্ক্রিন পরিবর্তন
+    document.getElementById('home-screen').style.display = "none";
+    document.getElementById('loading-portal').style.display = "block";
+
+    setTimeout(() => {
+        document.getElementById('loading-portal').style.display = "none";
+        document.getElementById('result-area').style.display = "block";
+        
+        // রেজাল্ট ফাংশনে লিঙ্গ (gender) পাঠানো হচ্ছে
+        processResult(name, heightInCm, weight, gender);
+    }, 2500);
+}
+
+function processResult(name, h, w) {
             document.getElementById('disp-name').innerText = name;
             
             const heightInMeters = h / 100;
@@ -496,28 +694,39 @@
             window.scrollTo(0, 0);
         }
 
-        function shareToFB() {
-            const url = window.location.href;
-            if (url.startsWith('file://')) {
-                alert("এটি লোকাল ফাইল। ফেসবুকে শেয়ার করতে হলে আগে ওয়েবসাইটটি ইন্টারনেটে (Render/Netlify) হোস্ট করুন।");
-                return;
-            }
-            const bmi = document.getElementById('bmi-score').innerText;
-            const text = encodeURIComponent(`আমার স্বাস্থ্য স্কোর (BMI) হলো ${bmi}! আপনার স্বাস্থ্য কেমন তা জানতে লিঙ্কে ক্লিক করুন:`);
-            window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank');
-        }
+// ফেসবুক শেয়ার
+function shareToFB() {
+    const bmi = document.getElementById('bmi-score').innerText;
+    const url = window.location.href;
+    if (url.startsWith('file://')) {
+        alert("ইন্টারনেটে আপলোড করার পর শেয়ার কাজ করবে।");
+        return;
+    }
+    const text = encodeURIComponent(`আমার স্বাস্থ্য স্কোর (BMI) হলো ${bmi}! আপনিও চেক করুন:`);
+    window.open(`https://www.facebook.com/sharer/sharer.php?u=${url}&quote=${text}`, '_blank');
+}
 
-        const modalData = {
-            privacy: "<h2>প্রাইভেসি পলিসি</h2><p>আপনার শারীরিক তথ্য আমাদের সার্ভারে সংরক্ষণ করা হয় না। এটি কেবল ইনস্ট্যান্ট রেজাল্ট দেখানোর জন্য ব্যবহৃত হয়।</p>",
-            about: "<h2>আমাদের সম্পর্কে</h2><p>NutriLife AI একটি আধুনিক স্বাস্থ্য সচেতনতা প্ল্যাটফর্ম। আমাদের লক্ষ্য মানুষকে ডিজিটাল উপায়ে সুস্থ থাকতে সহায়তা করা।</p>",
-            contact: "<h2>যোগাযোগ</h2><p>ইমেইল: info@nutrilifeai.com<br>হোয়াটসঅ্যাপ: 8801894820513</p>"
-        };
+// মোডাল লজিক
+function showModal(type) {
+    // এখানে তোমার আগের মোডাল ডাটা থাকবে
+    document.getElementById('modal').style.display = "block";
+}
+function closeModal() { document.getElementById('modal').style.display = "none"; }
 
-        function showModal(type) {
-            document.getElementById('modal-txt').innerHTML = modalData[type];
-            document.getElementById('modal').style.display = "block";
-        }
-        function closeModal() { document.getElementById('modal').style.display = "none"; }
+
+function downloadCard() {
+    const reportArea = document.getElementById('result-portal'); // তোমার রেজাল্ট সেকশনের আইডি
+    
+    html2canvas(reportArea, {
+        backgroundColor: "#0a0c10", // তোমার সাইটের ব্যাকগ্রাউন্ড কালার
+        scale: 2 // ছবির কোয়ালিটি বাড়াতে
+    }).then(canvas => {
+        const link = document.createElement('a');
+        link.download = uName + '_Health_Report.png'; // ইউজারের নামে সেভ হবে
+        link.href = canvas.toDataURL();
+        link.click();
+    });
+}
     </script>
 </body>
 </html>
