@@ -1,100 +1,317 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>যোগাযোগ - NutriLife AI</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&display=swap" rel="stylesheet">
-    <style>
+    <title>Contact Us | NutriLife AI - Get in Touch with Health Experts</title>
+    
+    <!-- Premium Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
- /* --- MEGA PREMIUM CSS ENGINE (HEALTH THEME) --- */
+    <style>
+        /* --- ELITE UI ENGINE --- */
         :root {
             --medical-blue: #0ea5e9;
             --health-green: #10b981;
-            --pure-white: #ffffff;
             --dark-navy: #0f172a;
-            --soft-gray: #f8fafc;
-            --border-color: #e2e8f0;
-            --hind: 'Hind Siliguri', sans-serif;
+            --pure-white: #ffffff;
+            --bg-light: #f8fafc;
+            --border: #e2e8f0;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        input, button, select, textarea {
-    font-family: 'Hind Siliguri', sans-serif !important;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: var(--bg-light); color: var(--dark-navy); line-height: 1.6; }
+
+        /* --- NAVIGATION --- */
+nav {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    padding: 15px 0;
+    position: sticky; top: 0; z-index: 2000;
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 30px;
+}
+.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
+.nav-links-desktop { display: flex; gap: 20px; list-style: none; }
+.nav-links-desktop a { color: #475569; text-decoration: none; font-weight: 600; font-size: 15px; }
+
+/* Mobile Menu Icon */
+.menu-icon { display: none; cursor: pointer; font-size: 24px; color: var(--medical-blue); }
+
+/* Sidebar Styling (Slide from Right) */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: -280px; /* ডিফল্টভাবে স্ক্রিনের বাইরে থাকবে */
+    width: 280px;
+    height: 100vh;
+    background: white;
+    z-index: 3000;
+    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar.active { right: 0; } /* স্লাইড করে ভেতরে আসার জন্য */
+
+.sidebar-header { text-align: left; margin-bottom: 30px; }
+.close-btn { font-size: 28px; color: #ef4444; cursor: pointer; }
+
+.sidebar-links { list-style: none; padding: 0; }
+.sidebar-links li { margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+.sidebar-links a { 
+    text-decoration: none; color: var(--dark-navy); font-size: 18px; 
+    font-weight: 600; display: flex; align-items: center; gap: 15px;
+}
+.sidebar-links a i { color: var(--medical-blue); width: 25px; }
+
+.sidebar-footer { margin-top: auto; text-align: center; font-size: 12px; color: #94a3b8; }
+
+/* Overlay Background */
+.overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5); z-index: 2500;
+    display: none;
+    backdrop-filter: blur(3px);
+}
+.overlay.active { display: block; }
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .nav-links-desktop { display: none; }
+    .menu-icon { display: block; }
 }
 
 
-        body { font-family: 'Hind Siliguri', sans-serif; line-height: 1.8; color: #333; padding: 0px; background: #f8fafc; text-align: center; }
-        .container { max-width: 600px; margin: auto; background: #fff; padding: 40px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
-        .info { margin-top: 20px; font-size: 18px; }
-        .btn { display: inline-block; padding: 10px 20px; background: #0ea5e9; color: white; text-decoration: none; border-radius: 10px; margin-top: 20px; }
+        
+        .logo { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: var(--medical-blue); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+        .nav-links { display: flex; gap: 15px; }
+        .nav-links a { color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s; cursor: pointer; }
+        .nav-links a:hover { color: var(--health-green); }
 
 
+        /* --- HERO AREA --- */
+        .hero { padding: 140px 8% 60px; background: var(--dark-navy); color: #fff; text-align: center; }
+        .hero h1 { font-size: 40px; font-weight: 800; margin-bottom: 10px; }
+        .hero p { font-size: 16px; color: #94a3b8; }
 
+        /* --- CONTACT GRID --- */        
+        .contact-info {max-width: 600px; margin: 25px auto; padding: 0 20px; background: #fff; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.03); border: 1px solid var(--border); }
+        .info-item { display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .info-item i { font-size: 24px; color: var(--medical-blue); background: #f0f9ff; padding: 15px; border-radius: 50%; }
+        .info-item h4 { font-size: 18px; margin-bottom: 5px; }
+        .info-item p { font-size: 14px; color: #64748b; }
 
+        .contact-form { max-width: 600px; margin: 25px auto; padding: 0 20px; background: #fff; padding: 40px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.03); border: 1px solid var(--border); }
+        .form-group { margin-bottom: 20px; }
+        label { display: block; font-size: 14px; font-weight: 600; margin-bottom: 8px; color: var(--dark-navy); }
+        input, textarea { width: 100%; padding: 15px; border: 2px solid #f1f5f9; border-radius: 12px; font-family: inherit; outline: none; transition: 0.3s; }
+        input:focus, textarea:focus { border-color: var(--medical-blue); background: #f8fafc; }
+        .btn-submit { background: var(--medical-blue); color: #fff; border: none; padding: 15px 40px; border-radius: 50px; font-weight: 700; cursor: pointer; transition: 0.4s; width: 100%; }
+        .btn-submit:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(14, 165, 233, 0.3); }
 
+        /* --- FOUNDER SECTION --- */
+        .founder-card {max-width: 600px; margin: 25px auto; padding: 0 20px; grid-column: span 2; background: linear-gradient(to right, #dff2ff, #f0fdf4); padding: 40px; border-radius: 30px; display: flex; align-items: center; gap: 40px; margin-top: 20px; }
+        .founder-img { width: 180px; height: 180px; border-radius: 50%; border: 6px solid #fff; box-shadow: 0 10px 30px rgba(0,0,0,0.1); object-fit: cover; }
+        .founder-content h2 { font-size: 24px; color: var(--dark-navy); margin-bottom: 10px; }
+        .founder-content p { font-size: 15px; color: #475569; margin-bottom: 15px; }
+        .social-row a { font-size: 20px; color: var(--medical-blue); margin-right: 15px; transition: 0.3s; }
+        .social-row a:hover { color: var(--health-green); }
 
+         /* --- FOOTER --- */
+        footer { background: var(--dark-navy); color: #fff; padding: 80px 8% 30px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
+        .footer-grid h4 { color: var(--medical-blue); margin-bottom: 20px; font-size: 18px; }
+        .footer-grid p, .footer-grid a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 10px; display: block; }
+        .social-icons { display: flex; gap: 15px; margin-top: 20px; }
+        .social-icons a { font-size: 22px; color: #fff; opacity: 0.6; }
 
-        footer { background: var(--dark-navy); color: white; padding: 60px 8% 30px; text-align: center; }
-        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; text-align: left; }
-        .footer-grid h4 { color: var(--medical-blue); margin-bottom: 20px; }
-        .footer-grid a { color: #94a3b8; text-decoration: none; display: block; margin-bottom: 10px; font-size: 14px; }
-        .social { display: flex; gap: 20px; margin-top: 20px; justify-content: center; }
-        .social a { font-size: 24px; color: #fff; opacity: 0.6; }
-
-        @media (max-width: 600px) {
-            .hero h1 { font-size: 22px; }
-            .form-grid { grid-template-columns: 1fr; }
-            .report-card { padding: 30px 15px; }
-            .footer-grid { text-align: center; }
+        @media (max-width: 768px) {
+            .founder-box { flex-direction: column; text-align: center; }
+            .hero h1 { font-size: 32px; }
+            .content-card { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
-    <div class="founder-section" style="text-align: center; margin-bottom: 30px;">
-    <img src="your-photo.png" alt="Hasib" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid #0ea5e9; object-fit: cover; margin-bottom: 15px;">
-    <h3 style="margin: 0;">Kafi Ahad</h3>
-    <p style="color: #666; font-size: 14px;">ফাউন্ডার ও ডেভেলপার, NutriLife AI</p>
-</div>
-    <div class="container">
-        <h1>যোগাযোগ করুন (Contact Us)</h1>
-        <p>আপনার কোনো মতামত, পরামর্শ বা অভিযোগ থাকলে আমাদের সাথে সরাসরি যোগাযোগ করতে পারেন। আমরা ২৪ ঘণ্টার মধ্যে উত্তর দেওয়ার চেষ্টা করি।</p>
-        
-        <div class="info" style="text-align: left; padd-top: 20px;">
-            <p>E-mail: info.nutrilifeai@gmail.com</p>
-            <p>WhatsApp: 8801894820513</p>
-            <p>Location: চট্টগ্রাম, বাংলাদেশ</p>
+
+    <!-- Navigation -->
+<nav>
+    <div class="container nav-wrapper">
+        <a href="index.html" class="logo">
+            <i class="fas fa-heartbeat"></i> NutriLife AI
+        </a>
+        <!-- মেনু আইকন -->
+        <div class="menu-icon" onclick="toggleSidebar()">
+            <i class="fas fa-bars"></i>
         </div>
-
-        <a href="mailto:info.nutrilifeai@gmail.com" class="btn">সরাসরি মেইল করুন</a>
-        <br><br>
-        <a href="index.html" style="color: #666; text-decoration: none;">← হোমে ফিরে যান</a>
+        <!-- পিসির জন্য মেনু (মোবাইলে হাইড থাকবে) -->
+        <ul class="nav-links-desktop">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="privacy.html">Privacy Policy</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="blog.html">Heath Tips</a></li>
+        </ul>
     </div>
+</nav>
 
+<!-- মোবাইল সাইডবার (ডান পাশ থেকে আসবে) -->
+<div id="sidebar" class="sidebar">
+    <div class="sidebar-header">
+        <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
+    </div>
+    <ul class="sidebar-links">
+        <li><a href="index.html" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user"></i> About Us</a></li>
+        <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
+        <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="blog.html"><i class="fas fa-book-medical"></i> Heath Tips</a></li>
+    </ul>
+    <div class="sidebar-footer">
+        <p>NutriLife AI 0.1</p>
+    </div>
+</div>
 
-    <footer>
-        <div class="footer-grid">
-            <div>
-                <a href="#" class="logo" style="color: white;"><i class="fas fa-heartbeat"></i> NutriLife AI</a>
-                <p style="font-size: 13px; color: #666; margin-top: 15px;">আমরা আধুনিক এআই প্রযুক্তির মাধ্যমে মানুষের স্বাস্থ্যের মানোন্নয়নে কাজ করি। আমাদের সকল ডাটা বিশেষজ্ঞ পরামর্শের ওপর ভিত্তি করে তৈরি।</p>
+    <!-- Hero -->
+    <header class="hero">
+        <h1>Get In Touch</h1>
+        <p>We are here to help you on your journey to a healthier life. Contact us for any support or inquiries.</p>
+    </header>
+
+    <div class="container">
+        
+        <!-- Left: Info -->
+        <div class="contact-info">
+            <div class="info-item">
+                <i class="fas fa-envelope"></i>
+                <div>
+                    <h4>Email Support</h4>
+                    <p>info.nutrilifeai@gmail.com</p>
+                </div>
             </div>
-            <div>
-                <h4>কুইক লিঙ্ক</h4>
-                <a href="about.html">আমাদের সম্পর্কে</a> | 
-                <a href="privacy.html">প্রাইভেসি পলিসি</a> | 
-                <a href="contact.html">যোগাযোগ</a> |
-                <a href="blog.html">স্বাস্থ্য টিপস</a>
+            <div class="info-item">
+                <i class="fas fa-phone-alt"></i>
+                <div>
+                    <h4>WhatsApp / Call</h4>
+                    <p>+880 1894 820513</p>
+                </div>
             </div>
-            <div>
-                <h4>সোশ্যাল</h4>
-                <div class="social" style="justify-content: flex-start;">
-                    <a href="https://www.facebook.com/profile.php?id=61586716636762"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="mailto:info@nutrilifeai.com"><i class="fas fa-envelope"></i></a>
+            <div class="info-item">
+                <i class="fas fa-map-marker-alt"></i>
+                <div>
+                    <h4>Office Location</h4>
+                    <p>Chattogram, Bangladesh</p>
+                </div>
+            </div>
+            <div class="info-item">
+                <i class="fas fa-clock"></i>
+                <div>
+                    <h4>Working Hours</h4>
+                    <p>Sat - Thu (10 AM - 8 PM)</p>
                 </div>
             </div>
         </div>
-        <p style="font-size: 15px; color: #6e6d6d; border-top: 1px solid #111; padding-top: 20px;">&copy; 2026 NutriLife AI | Developed & Designed by Kafi Ahad</p>
+
+        <!-- Right: Form -->
+        <div class="contact-form">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" placeholder="Your Name" required>
+                </div>
+                <div class="form-group">
+                    <label>Email Address</label>
+                    <input type="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <input type="text" placeholder="How can we help?" required>
+                </div>
+                <div class="form-group">
+                    <label>Message</label>
+                    <textarea rows="4" placeholder="Your Message" required></textarea>
+                </div>
+                <button type="submit" class="btn-submit">Send Message <i class="fas fa-paper-plane"></i></button>
+            </form>
+        </div>
+
+        <!-- Founder Section -->
+        <div class="founder-card">
+            <img src="founder.png" alt="Hasib Ahmed" class="founder-img">
+            <div class="founder-content">
+                <h2>Message from the Founder</h2>
+                <p>Hello, I am <strong>Kafi Ahad</strong>. As the lead developer of NutriLife AI, I am committed to providing the most accurate health data to our users. If you have any technical feedback or business inquiries, feel free to reach out to me personally.</p>
+                <div class="social-row">
+                    <a href="https://www.facebook.com/profile.php?id=61564242167643"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://wa.me/8801894820513"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:abdullahalahadkafi@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- AdSense Heavy Content Placeholder -->
+    <div class="container" style="margin-top: 0;">
+        <div style="background: white; padding: 40px; border-radius: 30px; border: 1px dashed #ccc; text-align: center; color: #999; font-size: 12px;">
+            ADVERTISEMENT AREA
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div>
+                <h4>NutriLife AI</h4>
+                <p>Providing cutting-edge AI health solutions to help you live a smarter and healthier life. Accuracy and privacy are our top priorities.</p>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61586716636762"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/8801894820513"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div>
+                <h4>Quick Access</h4>
+                <a href="index.html">Home</a>
+                <a href="blog.html">Health Blog</a>
+                <a href="about.html">About Project</a>
+                <a href="privacy.html">Privacy & Policy</a>
+            </div>
+            <div>
+                <h4>Support & Contact</h4>
+                <p>Email: info.nutrilifeai@gmail.com</p>
+                <p>Location: Dhaka, Bangladesh</p>
+                <p>Phone: +8801894820513</p>
+            </div>
+        </div>
+        <div style="text-align: center; border-top: 1px solid #334155; padding-top: 20px; margin-top: 40px; font-size: 12px; color: #64748b;">
+            &copy; 2026 NutriLife AI | Designed & Developed by Kafi Ahad
+        </div>
     </footer>
+
+
+    <script>
+        function toggleSidebar() {
+            document.getElementById('sidebar').classList.toggle('active');
+            document.getElementById('overlay').classList.toggle('active');
+        }
+
+        // Form Submission logic
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert("Thank you! Your message has been sent to the NutriLife AI team. We will get back to you soon.");
+            this.reset();
+        });
+
+        function toggleSidebar() {
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay');
+    sidebar.classList.toggle('active');
+    overlay.classList.toggle('active');
+}
+    </script>
 </body>
 </html>
