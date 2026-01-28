@@ -144,7 +144,7 @@ nav {
 <nav>
     <div class="container nav-wrapper">
         <a href="index.html" class="logo">
-            <i class="fas fa-heartbeat"></i> NutriLife AI
+            <img src="favicon.png" alt="logo" style="width: 40px;"> <span style="color: #00a750;">NutriLife</span><span style="color: #1877f2;">AI</span>
         </a>
         <!-- মেনু আইকন -->
         <div class="menu-icon" onclick="toggleSidebar()">
@@ -263,7 +263,6 @@ nav {
             ADVERTISEMENT AREA
         </div>
     </div>
-
     <!-- Footer -->
     <footer>
         <div class="footer-grid">
@@ -294,21 +293,17 @@ nav {
             &copy; 2026 NutriLife AI | Designed & Developed by Kafi Ahad
         </div>
     </footer>
-
-
     <script>
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
-
         // Form Submission logic
         document.getElementById('contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             alert("Thank you! Your message has been sent to the NutriLife AI team. We will get back to you soon.");
             this.reset();
         });
-
         function toggleSidebar() {
     const sidebar = document.getElementById('sidebar');
     const overlay = document.getElementById('overlay');
