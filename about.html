@@ -2,271 +2,738 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon (Browser Tab Logo) -->
-<meta charset="UTF-8">
-<!-- Favicon (Browser Tab Logo) -->
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-<link rel="canonical" href="https://nutrilife-ai.onrender.com/about.html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<!-- Facebook & Social Media Optimization -->
-<meta property="og:title" content="About Us - NutriLife AI | Kafi Ahad">
-<meta property="og:description" content="Transforming Lives with AI | Your Health, Our Technology. Discover the story behind NutriLife AI.">
-<meta property="og:image" content="https://nutrilife-ai.onrender.com/video_nutrilife-ai.mp4">
-<meta property="og:url" content="https://nutrilife-ai.onrender.com/about.html">
-<meta property="og:type" content="website">
-
-<!-- Twitter Optimization -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="About Us - NutriLife AI | Kafi Ahad">
-<meta name="twitter:description" content="Transforming Lives with AI | Your Health, Our Technology. Discover the story behind NutriLife AI.">
-<meta name="twitter:image" content="https://nutrilife-ai.onrender.com/video_nutrilife-ai.mp4">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
 
 
-<!-- SEO Tags -->
+    <!-- Social & SEO Meta Tags -->
     <title>About Us | NutriLife AI - Advanced Health Technology</title>
-<meta name="description" content="Transforming Lives with AI | Your Health, Our Technology. Discover the story behind NutriLife AI.">
-<meta name="keywords" content="NutriLife AI, Kafi Ahad, Kafi, কাফি আহাদ, BMI Calculator Bangladesh, Health Tips, Diet Plan AI, স্বাস্থ্য টিপস, কাফি, NutriLife, BMI, Health tips by Kafi Ahad, Diet, Diet Plan, AI">
-<meta name="author" content="Kafi Ahad">
-    
-    <!-- Premium Fonts & Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Scroll Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
 
     <style>
-        /* --- GLOBAL CSS --- */
         :root {
-            --medical-blue: #0ea5e9;
-            --health-green: #10b981;
-            --dark-navy: #0f172a;
-            --pure-white: #ffffff;
-            --bg-light: #f8fafc;
-            --text-gray: #64748b;
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --secondary: #10b981;
+            --dark: #0f172a;
+            --slate-800: #1e293b;
+            --slate-100: #f1f5f9;
+            --text-muted: #64748b;
+            --glass-bg: rgba(255, 255, 255, 0.85);
+            --glass-border: rgba(226, 232, 240, 0.8);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --gradient-1: linear-gradient(135deg, #0ea5e9 0%, #10b981 100%);
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: var(--bg-light); color: var(--dark-navy); line-height: 1.8; }
-        /* --- NAVIGATION --- */
-nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    position: sticky; top: 0; z-index: 2000;
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 30px;
-}
-.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-.nav-links-desktop { display: flex; gap: 20px; list-style: none; }
-.nav-links-desktop a { color: #475569; text-decoration: none; font-weight: 600; font-size: 15px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
 
-/* Mobile Menu Icon */
-.menu-icon { display: none; cursor: pointer; font-size: 24px; color: var(--medical-blue); }
-
-/* Sidebar Styling (Slide from Right) */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: -280px; /* ডিফল্টভাবে স্ক্রিনের বাইরে থাকবে */
-    width: 280px;
-    height: 100vh;
-    background: white;
-    z-index: 3000;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-.sidebar.active { right: 0; } /* স্লাইড করে ভেতরে আসার জন্য */
-
-.sidebar-header { text-align: left; margin-bottom: 30px; }
-.close-btn { font-size: 28px; color: #ef4444; cursor: pointer; }
-
-.sidebar-links { list-style: none; padding: 0; }
-.sidebar-links li { margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
-.sidebar-links a { 
-    text-decoration: none; color: var(--dark-navy); font-size: 18px; 
-    font-weight: 600; display: flex; align-items: center; gap: 15px;
-}
-.sidebar-links a i { color: var(--medical-blue); width: 25px; }
-
-.sidebar-footer { margin-top: auto; text-align: center; font-size: 12px; color: #94a3b8; }
-
-/* Overlay Background */
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); z-index: 2500;
-    display: none;
-    backdrop-filter: blur(3px);
-}
-.overlay.active { display: block; }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .nav-links-desktop { display: none; }
-    .menu-icon { display: block; }
-}
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #f8fafc;
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
 
 
-        
-        .logo { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: var(--medical-blue); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a { color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--health-green); }
+        /*  ==============================
+                    NAVIGATION
+        =============================== */
 
 
-        
-        /* --- HERO AREA --- */
-        .hero { padding: 140px 8% 60px; background: var(--dark-navy); color: #fff; text-align: center; }
-        .hero h1 { font-size: 45px; font-weight: 800; margin-bottom: 15px; }
-        .hero p { font-size: 18px; color: #94a3b8; max-width: 800px; margin: auto; }
+        nav {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            padding: 16px 8%;
+            transition: all 0.3s ease;
+        }
 
-        /* --- CONTENT SECTION --- */
-        .content-card {max-width: 600px; margin: 25px auto; padding: 0 20px; background: #fff; padding: 50px; border-radius: 30px; box-shadow: 0 20px 40px rgba(0,0,0,0.03); border: 1px solid #e2e8f0; margin-bottom: 40px; }
-        .content-card h2 { font-size: 28px; color: var(--medical-blue); margin-bottom: 20px; border-left: 5px solid var(--health-green); padding-left: 15px; }
-        .content-card p { font-size: 16px; color: var(--text-gray); margin-bottom: 20px; text-align: justify; }
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
-        /* --- FOUNDER INFO --- */
-        .founder-box { max-width: 600px; margin: 25px auto; padding: 0 20px; display: flex; align-items: center; gap: 30px; background: #e3ffeb; padding: 40px; border-radius: 20px; margin-top: 40px; }
-        .founder-img { width: 150px; height: 150px; border-radius: 50%; border: 5px solid var(--health-green); object-fit: cover; }
-        .founder-text h3 { font-size: 22px; color: var(--dark-navy); }
-        .founder-text p { font-size: 14px; font-style: italic; color: var(--health-green); }
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
-        /* --- FOOTER --- */
-        footer { background: var(--dark-navy); color: #fff; padding: 80px 8% 30px; }
+        .logo img {
+            width: 38px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .nav-links-desktop {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links-desktop a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links-desktop a:hover,
+        .nav-links-desktop a.active {
+            color: var(--primary);
+        }
+
+        .nav-links-desktop a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links-desktop a:hover::after,
+        .nav-links-desktop a.active::after {
+            width: 100%;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 22px;
+            color: var(--dark);
+        }
+
+        /* --- SIDEBAR & OVERLAY --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 290px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 3000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: #ef4444;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .close-btn:hover { transform: rotate(90deg); }
+
+        .sidebar-links {
+            list-style: none;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-links a i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .sidebar-links a:hover {
+            background: var(--slate-100);
+            color: var(--primary);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            position: relative;
+            padding: 120px 8% 80px;
+            background: var(--dark);
+            color: #ffffff;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(14,165,233,0.15) 0%, rgba(16,185,129,0.05) 50%, rgba(15,23,42,0) 70%);
+            animation: pulse 12s infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(14, 165, 233, 0.15);
+            border: 1px solid rgba(14, 165, 233, 0.3);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #94a3b8;
+            font-weight: 400;
+        }
+
+        /* --- METRICS / STATS BAR --- */
+        .stats-container {
+            max-width: 1000px;
+            margin: -40px auto 60px;
+            padding: 0 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--glass-border);
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 10px;
+            border-right: 1px solid #f1f5f9;
+        }
+
+        .stat-item:last-child { border-right: none; }
+
+        .stat-number {
+            font-size: 32px;
+            font-weight: 800;
+            color: var(--primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .stat-label {
+            font-size: 13px;
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 5px;
+        }
+
+        /* --- CONTENT CARDS GRID --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto 80px;
+            padding: 0 20px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .content-card {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 24px;
+            border: 1px solid #f1f5f9;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
+            border-color: rgba(14, 165, 233, 0.2);
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 14px;
+            background: rgba(14, 165, 233, 0.1);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 24px;
+        }
+
+        .content-card h2 {
+            font-size: 22px;
+            color: var(--dark);
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .content-card p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+
+        .content-card p:last-child { margin-bottom: 0; }
+
+        /* --- FOUNDER SECTION --- */
+        .founder-section {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 28px;
+            padding: 50px;
+            color: #ffffff;
+            margin-top: 40px;
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .founder-section::after {
+            content: '';
+            position: absolute;
+            right: -50px;
+            bottom: -50px;
+            width: 200px;
+            height: 200px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 50%;
+            filter: blur(40px);
+        }
+
+        .founder-img-wrapper {
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .founder-img {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            border: 4px solid var(--secondary);
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+        }
+
+        .founder-badge {
+            position: absolute;
+            bottom: 5px;
+            right: 5px;
+            background: var(--secondary);
+            color: #fff;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            border: 3px solid var(--dark);
+        }
+
+        .founder-text h3 {
+            font-size: 26px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .founder-role {
+            font-size: 14px;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 18px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .founder-quote {
+            font-size: 15px;
+            color: #cbd5e1;
+            font-style: italic;
+            position: relative;
+            padding-left: 20px;
+            border-left: 3px solid var(--primary);
+            line-height: 1.7;
+        }
+
+/* --- ===========================
+                     FOOTER 
+        ============================--- */
+
+        footer { background: #0f172a; color: #fff; padding: 80px 8% 30px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-grid h4 { color: var(--medical-blue); margin-bottom: 20px; font-size: 18px; }
-        .footer-grid p, .footer-grid a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 10px; display: block; }
+        .footer-grid h4 { color: var(--medical-blue); margin-bottom: 20px; font-size: 18px; } 
+        .footer-grid p{ color: #94a3b8;}
+        .footer-grid a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 10px; display: block; }
+        .footer-grid a:hover{ color: #0ea5e9; text-decoration: underline;}
         .social-icons { display: flex; gap: 15px; margin-top: 20px; }
         .social-icons a { font-size: 22px; color: #fff; opacity: 0.6; }
+        .developer a{color: #94a3b8; text-decoration: none;}
+        .developer a:hover{ text-decoration: underline; color: #0ea5e9;}
+
 
         @media (max-width: 768px) {
-            .founder-box { flex-direction: column; text-align: center; }
-            .hero h1 { font-size: 32px; }
-            .content-card { padding: 30px 20px; }
+            .nav-links-desktop { display: none; }
+            .menu-icon { display: block; }
+            .hero h1 { font-size: 34px; }
+            .hero p { font-size: 16px; }
+            .stats-grid { grid-template-columns: 1fr; gap: 20px; }
+            .stat-item { border-right: none; border-bottom: 1px solid #f1f5f9; padding-bottom: 15px; }
+            .stat-item:last-child { border-bottom: none; }
+            .founder-section { flex-direction: column; text-align: center; padding: 35px 25px; }
+            .founder-quote { border-left: none; padding-left: 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 30px; }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-<nav>
-    <div class="container nav-wrapper">
-        <a href="index.html" class="logo">
-            <img src="favicon.png" alt="logo" style="width: 40px;"> <span style="color: #00a750;">NutriLife</span><span style="color: #1877f2;">AI</span>
-        </a>
-        <!-- মেনু আইকন -->
-        <div class="menu-icon" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
+<!-- OVERLAY -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
+
+
+    <!--=========================
+             NAVIGATIO
+    ========================== -->
+    <nav>
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="favicon.png" alt="NutriLife AI Logo">
+                <span><span style="color: var(--secondary);">NutriLife</span><span style="color: var(--primary);">AI</span></span>
+            </a>
+            
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links-desktop">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html">Health Blogs</a></li>
+                <li><a href="about.html" class="active">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+
+            </ul>
         </div>
-        <!-- পিসির জন্য মেনু (মোবাইলে হাইড থাকবে) -->
-        <ul class="nav-links-desktop">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="blog.html">Heath Tips</a></li>
+    </nav>
+
+
+    <!--================
+       MOBILE SIDEBA
+       ================= -->
+
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo" style="font-size: 18px;">
+                <img src="favicon.png" alt="Logo" style="width: 30px;">
+                <span><span style="color: var(--secondary);">NutriLife</span><span style="color: var(--primary);">AI</span></span>
+            </a>
+            <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user-group"></i> About Us</a></li>
+            <li><a href="blog.html" onclick="toggleSidebar()"><i class="fas fa-notes-medical"></i> Health Tips</a></li>
+            <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-shield-halved"></i> Privacy Policy</a></li>
+            <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-paper-plane"></i> Contact</a></li>
         </ul>
+        <div style="margin-top: auto; text-align: center; font-size: 12px; color: var(--text-muted);">
+            NutriLife AI &copy; 2026
+        </div>
     </div>
-</nav>
-
-<!-- মোবাইল সাইডবার (ডান পাশ থেকে আসবে) -->
-<div id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-        <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
-    </div>
-    <ul class="sidebar-links">
-        <li><a href="index.html" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user"></i> About Us</a></li>
-        <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
-        <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-envelope"></i> Contact</a></li>
-        <li><a href="blog.html"><i class="fas fa-book-medical"></i> Heath Tips</a></li>
-    </ul>
-    <div class="sidebar-footer">
-        <p>NutriLife AI 0.1</p>
-    </div>
-</div>
 
 
-   
-
-    <!-- Hero -->
+    <!-- HERO SECTION -->
     <header class="hero">
-        <h1>Transforming Lives with AI</h1>
-        <p>Your Health, Our Technology. Discover the story behind NutriLife AI.</p>
+        <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
+            <div class="hero-badge">
+                <i class="fas fa-sparkles"></i> Next-Gen Health Technology
+            </div>
+            <h1>Transforming Lives with Artificial Intelligence</h1>
+            <p>Your Health, Our Technology. Discover the vision, scientific accuracy, and story behind NutriLife AI.</p>
+        </div>
     </header>
 
+    <!-- STATS COUNTER BAR -->
+    <div class="stats-container" data-aos="zoom-in" data-aos-delay="200">
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="99.4">0</span>%</div>
+                <div class="stat-label">Calculation Accuracy</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number"><span class="counter" data-target="10000">0</span>+</div>
+                <div class="stat-label">AI Evaluations</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">WHO</div>
+                <div class="stat-label">Standard Alignment</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- MAIN CONTENT CARDS -->
     <div class="container">
-        <!-- Section 1: Who We Are -->
-        <div class="content-card">
-            <h2>Who We Are</h2>
-            <p>Welcome to <strong>NutriLife AI</strong>, a pioneering health-technology platform dedicated to revolutionizing personalized nutrition and wellness. Based in Bangladesh, we combine advanced Data Science with deep nutritional insights to provide real-time health evaluations. Our platform is designed to empower individuals with the data they need to live a balanced, disease-free life.</p>
-            <p>In an era of misinformation and generalized health advice, NutriLife AI stands out by offering scientifically-backed calculations and customized dietary guidance. We believe that technology should be a companion in your fitness journey, making complex data easy to understand and act upon.</p>
+        <div class="card-grid">
+            
+            <!-- Card 1 -->
+            <div class="content-card" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-icon">
+                    <i class="fas fa-compass-drafting"></i>
+                </div>
+                <h2>Who We Are</h2>
+                <p>Welcome to <strong>NutriLife AI</strong>, a pioneering health-technology platform dedicated to revolutionizing personalized nutrition and digital wellness.</p>
+                <p>Based in Bangladesh, we integrate modern Data Science with deep clinical nutrition insights to provide instant, precise health evaluations, helping individuals lead a balanced and healthier life.</p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="content-card" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-icon">
+                    <i class="fas fa-brain-circuit"></i>
+                </div>
+                <h2>Our AI-Driven Mission</h2>
+                <p>Our core mission is to <strong>democratize preventive health awareness</strong>. Quality nutritional guidance should be simple, automated, and accessible to everyone.</p>
+                <p>Using custom algorithms, our engine analyzes physical metrics and BMI to generate immediate, actionable fitness reports tailored to your weight goals and health conditions.</p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="content-card" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-icon">
+                    <i class="fas fa-microscope"></i>
+                </div>
+                <h2>Scientific Standards</h2>
+                <p>Every calculation on NutriLife AI is built upon strict metrics certified by the <strong>World Health Organization (WHO)</strong> and global health research.</p>
+                <p>We continuously optimize our algorithms to eliminate nutritional guesswork, delivering fast, secure, and medically grounded health intelligence.</p>
+            </div>
+
         </div>
 
-        <!-- Section 2: Our AI Mission -->
-        <div class="content-card">
-            <h2>Our AI-Driven Mission</h2>
-            <p>Our mission is simple: <strong>To democratize health awareness.</strong> We understand that traditional nutritionist consultations can be expensive and inaccessible. By utilizing Artificial Intelligence (AI), we have built an automated system that analyzes your BMI (Body Mass Index) and physical metrics to generate immediate, actionable health reports.</p>
-            <p>Whether you are looking to lose weight, build muscle, or manage a chronic condition like diabetes, our AI algorithms are trained to guide you toward the right nutritional path. We strive to reduce global obesity and malnutrition rates through digital innovation and constant research.</p>
-        </div>
-
-        <!-- Section 3: Technology & Data Accuracy -->
-        <div class="content-card">
-            <h2>Scientific Accuracy & Standards</h2>
-            <p>Every calculation performed on NutriLife AI follows the strict standards set by the <strong>World Health Organization (WHO)</strong>. Our BMI categories and dietary suggestions are cross-referenced with medical journals to ensure that you receive the most accurate information possible.</p>
-            <p>We leverage modern web technologies to ensure that our tools are not only accurate but also incredibly fast and mobile-responsive. At NutriLife AI, your digital experience is as important to us as your health results.</p>
-        </div>
-
-        <!-- Section 4: The Founder -->
-        <div class="founder-box">
-            <img src="founder.png" alt="Founder" class="founder-img">
+        <!-- FOUNDER SECTION -->
+        <div class="founder-section" data-aos="fade-up" data-aos-delay="400">
+            <div class="founder-img-wrapper">
+                <img src="founder.png" alt="Kafi Abdullah - Founder" class="founder-img">
+                <div class="founder-badge">
+                    <i class="fas fa-check"></i>
+                </div>
+            </div>
             <div class="founder-text">
-                <h3>Kafi Ahad</h3>
-                <p>Founder & Lead Developer, NutriLife AI</p>
-                <div style="margin-top: 15px; color: #555; font-size: 15px;">
-                    "As a tech enthusiast and developer, I wanted to create a tool that actually helps people. NutriLife AI is the result of my passion for helping others achieve their fitness goals through the power of Artificial Intelligence."
+                <h3>Kafi Abadullah</h3>
+                <div class="founder-role">Founder & Lead Developer</div>
+                <div class="founder-quote">
+                    "As a developer passionate about technology and ethical research, I founded NutriLife AI to solve real-world wellness challenges. My goal is to build intelligent, accessible tools that empower individuals to take control of their health through data."
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Footer -->
+       <!-- ========================
+               Footer
+    ========================== -->
+    
+    
     <footer>
         <div class="footer-grid">
             <div>
-                <h4>NutriLife AI</h4>
+                
+                <h4>
+                    NutriLife
+                </h4>
+
                 <p>Providing cutting-edge AI health solutions to help you live a smarter and healthier life. Accuracy and privacy are our top priorities.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61586716636762"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/8801894820513"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:abdullahalahadkafi@gmail.com"> <i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61586716636762" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/8801894820513" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:contact.alkafi@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <div>
                 <h4>Quick Access</h4>
-                <a href="index.html">Home</a>
-                <a href="blog.html">Health Blog</a>
-                <a href="about.html">About Project</a>
+                <a href="blog.html">Health Blogs</a>
+                <a href="about.html">About US</a>
                 <a href="privacy.html">Privacy & Policy</a>
             </div>
             <div>
                 <h4>Support & Contact</h4>
-                <p>Email: abdullahalahadkafi@gmail.com</p>
+                <p>Email: contact.alkafi@gmail.com</p>
                 <p>Location: Chattogram, Bangladesh</p>
                 <p>Phone: +8801894820513</p>
             </div>
         </div>
+
         <div style="text-align: center; border-top: 1px solid #334155; padding-top: 25px; margin-top: 40px; font-size: 15px; color: #8695aa;">
-            &copy; 2026 NutriLife AI<br>Designed & Developed by <a href="https://www.facebook.com/profile.php?id=61564242167643" style="color: #00a750;text-decoration: none;font-weight: bold;">Kafi Ahad</a> (Founder of NutriLife AI)<br>HSC Student & Ethical Hacking Enthusiast
+            <div class="developer">
+                 &copy; 2026 NutriLife AI<br>Designed & Developed by <a href="https://www.facebook.com/ekafiabdullah" target="_blank" >Kafi Abdullah</a>
+            </div>
         </div>
     </footer>
 
+    <!-- JS ANIMATION LIBRARIES -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
     <script>
+        // Initialize AOS Animation Library
+        AOS.init({
+            duration: 800,
+            easing: 'ease-in-out',
+            once: true,
+            offset: 100
+        });
+
+        // Toggle Sidebar Function
         function toggleSidebar() {
             document.getElementById('sidebar').classList.toggle('active');
             document.getElementById('overlay').classList.toggle('active');
         }
+
+        // Animated Number Counters Function
+        const counters = document.querySelectorAll('.counter');
+        const speed = 200;
+
+        const startCounters = () => {
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText;
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc);
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target;
+                    }
+                };
+                updateCount();
+            });
+        };
+
+        // Trigger Counter Animation when visible
+        let animated = false;
+        window.addEventListener('scroll', () => {
+            const statsSection = document.querySelector('.stats-container');
+            if (statsSection) {
+                const position = statsSection.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.2;
+                if (position < screenPosition && !animated) {
+                    startCounters();
+                    animated = true;
+                }
+            }
+        });
     </script>
 </body>
 </html>

@@ -1,418 +1,1013 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <!-- Favicon (Browser Tab Logo) -->
-<meta charset="UTF-8">
-<!-- Favicon (Browser Tab Logo) -->
-<link rel="icon" type="image/png" href="favicon.png">
-<link rel="apple-touch-icon" href="favicon.png">
-<link rel="canonical" href="https://nutrilife-ai.onrender.com/blog.html">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<!-- Facebook & Social Media Optimization -->
-<meta property="og:title" content="সেরা স্বাস্থ্য টিপস - NutriLife AI | Kafi Ahad">
-<meta property="og:description" content="স্বাস্থ্য কথা ও পুষ্টি ব্লগ | সুস্থ জীবন যাপনের জন্য নিয়মিত টিপস ও গাইডলাইন | কাফি আহাদ">
-<meta property="og:image" content="https://nutrilife-ai.onrender.com/health-tips-nutrilife-ai.png">
-<meta property="og:url" content="https://nutrilife-ai.onrender.com/blog.html">
-<meta property="og:type" content="website">
-
-<!-- Twitter Optimization -->
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="সেরা স্বাস্থ্য টিপস - NutriLife AI | Kafi Ahad">
-<meta name="twitter:description" content="স্বাস্থ্য কথা ও পুষ্টি ব্লগ | সুস্থ জীবন যাপনের জন্য নিয়মিত টিপস ও গাইডলাইন">
-<meta name="twitter:image" content="https://nutrilife-ai.onrender.com/health-tips-nutrilife-ai.png">
-
-
-<!-- SEO Tags -->
-    <title>স্বাস্থ্য কথা ও পুষ্টি ব্লগ - NutriLife AI | Kafi Ahad</title>
-<meta name="description" content="স্বাস্থ্য কথা ও পুষ্টি ব্লগ | সুস্থ জীবন যাপনের জন্য নিয়মিত টিপস ও গাইডলাইন | কাফি আহাদ">
-<meta name="keywords" content="NutriLife AI, Kafi Ahad, Kafi, কাফি আহাদ, BMI Calculator Bangladesh, Health Tips, Diet Plan AI, স্বাস্থ্য টিপস, কাফি, NutriLife, BMI, Health tips by Kafi Ahad, Diet, Diet Plan, AI">
-<meta name="author" content="Kafi Ahad">
-
-<link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NutriLife AI - Health Tips & Nutrition Blog</title>
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
     <style>
-        :root { --p: #0ea5e9; --s: #0f172a; --bg: #f8fafc; }
-        body { font-family: 'Hind Siliguri', sans-serif; background: var(--bg); color: var(--s); line-height: 1.8; }
-
-
- /* --- MEGA PREMIUM CSS ENGINE (HEALTH THEME) --- */
         :root {
-            --medical-blue: #0ea5e9;
-            --health-green: #10b981;
-            --pure-white: #ffffff;
+            --primary: #00a750;
+            --primary-dark: #008640;
+            --primary-light: #e6f6ec;
+            --accent: #1877f2;
+            --accent-hover: #1464cc;
             --dark-navy: #0f172a;
-            --soft-gray: #f8fafc;
-            --border-color: #e2e8f0;
-            --hind: 'Hind Siliguri', sans-serif;
+            --slate-800: #1e293b;
+            --slate-600: #475569;
+            --slate-500: #64748b;
+            --slate-300: #cbd5e1;
+            --slate-100: #f1f5f9;
+            --bg: #f8fafc;
+            --card-bg: #ffffff;
+            --border: #e2e8f0;
+            --shadow-sm: 0 2px 8px rgba(15, 23, 42, 0.04);
+            --shadow-md: 0 10px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+            --shadow-lg: 0 20px 35px -10px rgba(15, 23, 42, 0.12);
+            --radius-sm: 8px;
+            --radius-md: 14px;
+            --radius-lg: 20px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        input, button, select, textarea {
-    font-family: 'Hind Siliguri', sans-serif !important;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
 
-/* --- NAVIGATION --- */
-nav {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    padding: 15px 0;
-    position: sticky; top: 0; z-index: 2000;
-    border-bottom: 1px solid var(--border-color);
-    padding: 15px 30px;
-}
-.nav-wrapper { display: flex; justify-content: space-between; align-items: center; }
-.nav-links-desktop { display: flex; gap: 20px; list-style: none; }
-.nav-links-desktop a { color: #475569; text-decoration: none; font-weight: 600; font-size: 15px; }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--slate-800);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-/* Mobile Menu Icon */
-.menu-icon { display: none; cursor: pointer; font-size: 24px; color: var(--medical-blue); }
-
-/* Sidebar Styling (Slide from Right) */
-.sidebar {
-    position: fixed;
-    top: 0;
-    right: -280px; /* ডিফল্টভাবে স্ক্রিনের বাইরে থাকবে */
-    width: 280px;
-    height: 100vh;
-    background: white;
-    z-index: 3000;
-    transition: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-}
-.sidebar.active { right: 0; } /* স্লাইড করে ভেতরে আসার জন্য */
-
-.sidebar-header { text-align: left; margin-bottom: 30px; }
-.close-btn { font-size: 28px; color: #ef4444; cursor: pointer; }
-
-.sidebar-links { list-style: none; padding: 0; }
-.sidebar-links li { margin-bottom: 15px; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
-.sidebar-links a { 
-    text-decoration: none; color: var(--dark-navy); font-size: 18px; 
-    font-weight: 600; display: flex; align-items: center; gap: 15px;
-}
-.sidebar-links a i { color: var(--medical-blue); width: 25px; }
-
-.sidebar-footer { margin-top: auto; text-align: center; font-size: 12px; color: #94a3b8; }
-
-/* Overlay Background */
-.overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5); z-index: 2500;
-    display: none;
-    backdrop-filter: blur(3px);
-}
-.overlay.active { display: block; }
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .nav-links-desktop { display: none; }
-    .menu-icon { display: block; }
-}
-
-
+        /*  ==============================
+                    NAVIGATION
+        =============================== */
         
-        .logo { font-family: 'Poppins', sans-serif; font-size: 22px; font-weight: 800; color: var(--medical-blue); text-decoration: none; display: flex; align-items: center; gap: 8px; }
-        .nav-links { display: flex; gap: 15px; }
-        .nav-links a { color: #475569; text-decoration: none; font-size: 13px; font-weight: 600; transition: 0.3s; cursor: pointer; }
-        .nav-links a:hover { color: var(--health-green); }
+        nav {
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid var(--glass-border);
+            padding: 16px 8%;
+            transition: all 0.3s ease;
+        }
 
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
 
+        .logo {
+            font-size: 22px;
+            font-weight: 800;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
 
+        .logo img {
+            width: 38px;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
 
+        .logo:hover img {
+            transform: rotate(10deg) scale(1.05);
+        }
+
+        .nav-links-desktop {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links-desktop a {
+            color: #475569;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links-desktop a:hover,
+        .nav-links-desktop a.active {
+            color: var(--primary);
+        }
+
+        .nav-links-desktop a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links-desktop a:hover::after,
+        .nav-links-desktop a.active::after {
+            width: 100%;
+        }
+
+        .menu-icon {
+            display: none;
+            cursor: pointer;
+            font-size: 22px;
+            color: var(--dark);
+        }
+
+        /* --- SIDEBAR & OVERLAY --- */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 290px;
+            height: 100vh;
+            background: #ffffff;
+            z-index: 3000;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
+            padding: 30px 24px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .sidebar.active { right: 0; }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .close-btn {
+            font-size: 24px;
+            color: #ef4444;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .close-btn:hover { transform: rotate(90deg); }
+
+        .sidebar-links {
+            list-style: none;
+        }
+
+        .sidebar-links li {
+            margin-bottom: 12px;
+        }
+
+        .sidebar-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            padding: 12px 16px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+        }
+
+        .sidebar-links a i {
+            color: var(--primary);
+            width: 20px;
+        }
+
+        .sidebar-links a:hover {
+            background: var(--slate-100);
+            color: var(--primary);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 2500;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: #ffffff;
+            padding: 70px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -20%;
+            width: 600px;
+            height: 600px;
+            background: radial-gradient(circle, rgba(0, 167, 80, 0.15) 0%, rgba(0, 0, 0, 0) 70%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(0, 167, 80, 0.15);
+            color: #22c55e;
+            border: 1px solid rgba(34, 197, 94, 0.3);
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            font-weight: 800;
+            line-height: 1.25;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+
+        .hero p {
+            font-size: 17px;
+            color: #94a3b8;
+            max-width: 620px;
+            margin: 0 auto;
+        }
+
+        /* --- BLOG CONTROLS & FILTER --- */
+        .blog-controls {
+            margin: -30px auto 40px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .controls-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .search-box {
+            position: relative;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 12px 16px 12px 42px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            font-size: 14px;
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+            background: var(--slate-100);
+        }
+
+        .search-box input:focus {
+            border-color: var(--primary);
+            background: #fff;
+            box-shadow: 0 0 0 3px rgba(0, 167, 80, 0.12);
+        }
+
+        .search-box i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--slate-500);
+            font-size: 15px;
+        }
+
+        .category-buttons {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cat-btn {
+            padding: 8px 16px;
+            border-radius: var(--radius-sm);
+            border: 1px solid var(--border);
+            background: #fff;
+            color: var(--slate-600);
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .cat-btn:hover,
+        .cat-btn.active {
+            background: var(--primary);
+            color: #fff;
+            border-color: var(--primary);
+        }
+
+        /* --- BLOG GRID --- */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .blog-card {
+            background: var(--card-bg);
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+            border-color: rgba(0, 167, 80, 0.3);
+        }
+
+        .card-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
+            background: var(--slate-100);
+        }
+
+        .card-img-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .blog-card:hover .card-img-wrapper img {
+            transform: scale(1.06);
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 14px;
+            left: 14px;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .card-content {
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+        }
+
+        .card-meta {
+            display: flex;
+            gap: 14px;
+            font-size: 12px;
+            color: var(--slate-500);
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .card-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .card-title {
+            font-size: 19px;
+            font-weight: 700;
+            color: var(--dark-navy);
+            line-height: 1.4;
+            margin-bottom: 12px;
+            transition: var(--transition);
+        }
+
+        .blog-card:hover .card-title {
+            color: var(--primary);
+        }
+
+        .card-excerpt {
+            font-size: 14px;
+            color: var(--slate-600);
+            line-height: 1.6;
+            margin-bottom: 20px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .card-footer {
+            margin-top: auto;
+            padding-top: 16px;
+            border-top: 1px solid var(--slate-100);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: var(--primary);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .card-footer i {
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card:hover .card-footer i {
+            transform: translateX(4px);
+        }
+
+        /* --- NO RESULTS STATE --- */
+        .no-results {
+            text-align: center;
+            padding: 60px 20px;
+            grid-column: 1 / -1;
+            display: none;
+        }
+
+        .no-results i {
+            font-size: 48px;
+            color: var(--slate-300);
+            margin-bottom: 16px;
+        }
+
+        .no-results h3 {
+            font-size: 20px;
+            color: var(--slate-800);
+            margin-bottom: 8px;
+        }
+
+        .no-results p {
+            color: var(--slate-500);
+            font-size: 14px;
+        }
+
+        /* --- ARTICLE MODAL --- */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(6px);
+            z-index: 4000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-content {
+            background: #ffffff;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            border-radius: var(--radius-lg);
+            overflow-y: auto;
+            position: relative;
+            box-shadow: var(--shadow-lg);
+            transform: scale(0.95);
+            transition: var(--transition);
+        }
+
+        .modal.active .modal-content {
+            transform: scale(1);
+        }
+
+        .modal-close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 38px;
+            height: 38px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 18px;
+            color: var(--slate-800);
+            cursor: pointer;
+            z-index: 10;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition);
+        }
+
+        .modal-close-btn:hover {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .modal-hero-img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+        }
+
+        .modal-body {
+            padding: 36px;
+        }
+
+        .modal-category {
+            display: inline-block;
+            background: var(--primary-light);
+            color: var(--primary);
+            font-size: 13px;
+            font-weight: 700;
+            padding: 4px 12px;
+            border-radius: 20px;
+            margin-bottom: 12px;
+        }
+
+        .modal-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: var(--dark-navy);
+            line-height: 1.3;
+            margin-bottom: 16px;
+        }
+
+        .modal-meta {
+            display: flex;
+            gap: 18px;
+            font-size: 13px;
+            color: var(--slate-500);
+            margin-bottom: 24px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .modal-text {
+            color: var(--slate-800);
+            font-size: 16px;
+            line-height: 1.8;
+        }
+
+        .modal-text p { margin-bottom: 18px; }
+        .modal-text h3 {
+            font-size: 20px;
+            color: var(--dark-navy);
+            margin: 28px 0 12px;
+            font-weight: 700;
+        }
+
+        .modal-text strong {
+            color: var(--dark-navy);
+        }
         
-        header { background: var(--s); color: white; padding: 100px 5%; text-align: center; }        
-        .ad-space { background: #f1f5f9; border: 1px dashed #cbd5e1; padding: 20px; text-align: center; margin: 25px auto; border-radius: 15px; color: #94a3b8; font-size: 12px; max-width: 600px; }
-        
-        .article-card {max-width: 600px; margin: 25px auto; padding: 0 20px; background: white; padding: 30px; border-radius: 20px; margin-bottom: 30px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); border-left: 6px solid var(--p); }
-        .article-card h2 { color: var(--p); margin-bottom: 15px; font-size: 24px; }
-        .back-home { display: inline-block; margin-bottom: 20px; color: var(--p); text-decoration: none; font-weight: bold; font-size: 14px; }
 
+/* --- ===========================
+                     FOOTER 
+        ============================--- */
 
-        
-        
-         /* --- FOOTER --- */
-        footer { background: var(--dark-navy); color: #fff; padding: 80px 8% 30px; }
+        footer { background: #0f172a; color: #fff; padding: 80px 8% 30px; }
         .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 40px; }
-        .footer-grid h4 { color: var(--medical-blue); margin-bottom: 20px; font-size: 18px; }
-        .footer-grid p, .footer-grid a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 10px; display: block; }
+        .footer-grid h4 { color: var(--medical-blue); margin-bottom: 20px; font-size: 18px; } 
+        .footer-grid p{ color: #94a3b8;}
+        .footer-grid a { color: #94a3b8; text-decoration: none; font-size: 14px; margin-bottom: 10px; display: block; }
+        .footer-grid a:hover{ color: #0ea5e9; text-decoration: underline;}
         .social-icons { display: flex; gap: 15px; margin-top: 20px; }
         .social-icons a { font-size: 22px; color: #fff; opacity: 0.6; }
+        .developer a{color: #94a3b8; text-decoration: none;}
+        .developer a:hover{ text-decoration: underline; color: #0ea5e9;}
+
 
         @media (max-width: 768px) {
-            .founder-box { flex-direction: column; text-align: center; }
-            .hero h1 { font-size: 32px; }
-            .content-card { padding: 30px 20px; }
+            .nav-links-desktop { display: none; }
+            .menu-icon { display: flex; }
+
+            .hero h1 { font-size: 30px; }
+            .hero p { font-size: 15px; }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .controls-card {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .category-buttons {
+                overflow-x: auto;
+                padding-bottom: 6px;
+                white-space: nowrap;
+                flex-wrap: nowrap;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .modal-body {
+                padding: 24px;
+            }
+
+            .modal-hero-img {
+                height: 220px;
+            }
         }
+        @media (max-width: 768px) {
+    /* ১. নেভিগেশন ও কনটেন্টের ফিক্সড প্যাডিং দূর করা */
+    nav {
+        padding: 12px 16px !important;
+    }
+
+    /* ২. সার্চবার ও ক্যাটাগরি বাটনগুলো সঠিকভাবে পজিশন করা */
+    .controls-card {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        padding: 16px !important;
+    }
+
+    .search-box {
+        width: 100% !important;
+        min-width: 100% !important;
+    }
+
+    /* ৩. ক্যাটাগরি বাটনগুলো মোবাইলে সুন্দর করার জন্য */
+    .category-buttons {
+        display: flex !important;
+        overflow-x: auto !important;
+        width: 100% !important;
+        padding-bottom: 8px !important;
+    }
+
+    /* ৪. গ্রিড লেআউট ঠিক রাখা */
+    .blog-grid {
+        grid-template-columns: 1fr !important;
+        width: 100% !important;
+    }
+}
     </style>
 </head>
 <body>
-<!-- Navigation -->
-<nav>
-    <div class="container nav-wrapper">
-        <a href="index.html" class="logo">
-            <img src="favicon.png" alt="logo" style="width: 40px;"> <span style="color: #00a750;">NutriLife</span><span style="color: #1877f2;">AI</span>
-        </a>
-        <!-- মেনু আইকন -->
-        <div class="menu-icon" onclick="toggleSidebar()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <!-- পিসির জন্য মেনু (মোবাইলে হাইড থাকবে) -->
-        <ul class="nav-links-desktop">
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About Us</a></li>
-            <li><a href="privacy.html">Privacy Policy</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            <li><a href="blog.html">Heath Tips</a></li>
-        </ul>
-    </div>
-</nav>
 
-<!-- মোবাইল সাইডবার (ডান পাশ থেকে আসবে) -->
-<div id="sidebar" class="sidebar">
-    <div class="sidebar-header">
-        <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
-    </div>
-    <ul class="sidebar-links">
-        <li><a href="index.html" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a></li>
-        <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user"></i> About Us</a></li>
-        <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-user-shield"></i> Privacy Policy</a></li>
-        <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-envelope"></i> Contact</a></li>
-        <li><a href="blog.html"><i class="fas fa-book-medical"></i> Heath Tips</a></li>
-    </ul>
-    <div class="sidebar-footer">
-        <p>NutriLife AI 0.1</p>
-    </div>
-</div>
+    <!-- OVERLAY -->
+    <div id="overlay" class="overlay" onclick="toggleSidebar()"></div>
 
-    <header>
-        <h1>স্বাস্থ্য কথা ও পুষ্টি ব্লগ</h1>
-        <p>সুস্থ জীবন যাপনের জন্য নিয়মিত টিপস ও গাইডলাইন</p>
-    </header>
 
-        <!-- বিজ্ঞাপন ১ (টপ অ্যাড) -->
-        <div class="ad-space">বিজ্ঞাপন এখানে দেখাবে (অ্যাডসেন্স টপ ব্যানার)</div>
-        <!-- আরও আর্টিকেল এখানে যোগ করো... -->
-         
-            <div class="article-card">
-                <h2>মেদ কমানোর আধুনিক ও বৈজ্ঞানিক পদ্ধতি</h2>
-                <p>ওজন কমানো কেবল ডায়েটের ওপর নির্ভর করে না, এর সাথে শারীরিক পরিশ্রমও যুক্ত। আপনি যদি প্রতিদিন মাত্র ৩০ মিনিট দ্রুত হাঁটেন, তবে আপনার শরীর থেকে বাড়তি ক্যালোরি ঝরবে এবং হৃদযন্ত্র ভালো থাকবে। আমাদের টেস্টে যদি আপনার বিএমআই ২৫ এর বেশি আসে, তবে এখনই সচেতন হওয়া প্রয়োজন। সঠিক পরিকল্পনা এবং ধৈর্যই পারে আপনাকে একটি সুস্থ ও সুন্দর শরীর উপহার দিতে।</p>
+    <!--=========================
+             NAVIGATIO
+    ========================== -->
+
+
+    <nav>
+        <div class="container">
+        <div class="nav-wrapper">
+            <a href="index.html" class="logo">
+                <img src="favicon.png" alt="NutriLife AI Logo">
+                <span><span style="color: var(--secondary);">NutriLife</span><span style="color: var(--primary);">AI</span></span>
+            </a>
+            
+            <div class="menu-icon" onclick="toggleSidebar()">
+                <i class="fas fa-bars"></i>
             </div>
 
-
-<!-- বিজ্ঞাপন ২ (মাঝখানে) -->
-        <div class="ad-space" style="height: 100px;">বিজ্ঞাপন ২ (আর্টিকেলের মাঝে)</div>
-
-
-
-            <div class="article-card">
-    <h2>সকালে খালি পেটে লেবুর জল: এক জাদুকরী স্বাস্থ্য পানীয়</h2>
-    <p>সকালে ঘুম থেকে উঠে এক গ্লাস হালকা গরম লেবুর জল খাওয়া স্বাস্থ্যের জন্য অত্যন্ত উপকারী। এটি কেবল একটি পানীয় নয়, বরং শরীরকে ডিটক্স করার বা বিষমুক্ত করার একটি প্রাকৃতিক উপায়। লেবুতে রয়েছে প্রচুর পরিমাণে ভিটামিন সি, পটাশিয়াম এবং অ্যান্টি-অক্সিডেন্ট যা শরীরের রোগ প্রতিরোধ ক্ষমতা বৃদ্ধিতে সহায়তা করে।</p>
-    <p>পাচনতন্ত্র বা হজম শক্তি বৃদ্ধিতে লেবুর জলের ভূমিকা অপরিসীম। এটি লিভারকে সক্রিয় করে এবং পিত্তরস নিঃসরণে সাহায্য করে, যার ফলে খাবার দ্রুত হজম হয়। এছাড়া যারা ওজন কমাতে চান, তাদের জন্য এটি একটি আদর্শ পানীয়। লেবুতে থাকা পেকটিন ফাইবার পেটে অনেকক্ষণ ভরা রাখে, ফলে বারবার খাওয়ার ইচ্ছা কমে যায়।</p>
-    <p>ত্বকের উজ্জ্বলতা বৃদ্ধিতেও লেবুর জলের জুড়ি নেই। এটি রক্ত পরিষ্কার করে এবং ত্বকের দাগ দূর করতে সাহায্য করে। তবে মনে রাখবেন, অতিরিক্ত লেবুর রস দাঁতের এনামেলের ক্ষতি করতে পারে, তাই খাওয়ার পর মুখ ভালো করে ধুয়ে নেওয়া উচিত। প্রতিদিন এই অভ্যাসটি গড়ে তুললে আপনি দীর্ঘমেয়াদী সুফল পাবেন।</p>
-</div>
-<div class="article-card" style="border-left: 5px solid var(--health-green);">
-    <h2>আধুনিক জীবনে মানসিক চাপ নিয়ন্ত্রণ ও সুস্থ থাকার কৌশল</h2>
-    <p>বর্তমান যুগে ক্যারিয়ার, পড়াশোনা এবং সামাজিক জীবনের চাপে আমরা প্রায়ই মানসিক ভারসাম্য হারিয়ে ফেলি। দীর্ঘস্থায়ী মানসিক চাপ আমাদের হৃদরোগ, উচ্চ রক্তচাপ এবং অনিদ্রার মতো বড় বড় রোগের দিকে ঠেলে দেয়। তাই মানসিকভাবে সুস্থ থাকা এখন বিলাসিতা নয়, বরং একটি বড় প্রয়োজন।</p>
-    <p>মানসিক চাপ কমাতে 'ডিপ ব্রিদিং' বা গভীর শ্বাস-প্রশ্বাসের ব্যায়াম খুব কার্যকর। প্রতিদিন মাত্র ১০ মিনিট চোখ বন্ধ করে দীর্ঘ শ্বাস নিলে মস্তিষ্কে অক্সিজেনের সরবরাহ বাড়ে এবং মন শান্ত হয়। এছাড়া নিয়মিত শরীরচর্চা করলে শরীর থেকে 'এন্ডোরফিন' নামক হরমোন নিঃসৃত হয়, যা আমাদের মনকে প্রফুল্ল রাখে।</p>
-    <p>ডিজিটাল ডিটক্স আরেকটি জরুরি বিষয়। ঘুমানোর অন্তত এক ঘণ্টা আগে মোবাইল বা ল্যাপটপ থেকে দূরে থাকা উচিত। কারণ স্ক্রিনের নীল আলো আমাদের ঘুম নষ্ট করে এবং উদ্বেগ বাড়ায়। পর্যাপ্ত ঘুম এবং প্রিয়জনদের সাথে সময় কাটানো আপনার মানসিক স্বাস্থ্যকে বহুগুণ উন্নত করতে পারে। মনে রাখবেন, সুস্থ শরীরের জন্য সুস্থ মন অপরিহার্য।</p>
-</div>
-
-
-
-
-
-<!-- বিজ্ঞাপন ২ (মাঝখানে) -->
-        <div class="ad-space" style="height: 100px;">বিজ্ঞাপন ২ (আর্টিকেলের মাঝে)</div>
-
-
-
-
-
-
-<div class="article-card">
-    <h2>ওজন কমাতে ডায়েট চার্টে কোন খাবারগুলো রাখা জরুরি?</h2>
-    <p>ওজন কমানো মানে না খেয়ে থাকা নয়, বরং সঠিক সময়ে সঠিক খাবার খাওয়া। একটি আদর্শ ডায়েট চার্টে কার্বোহাইড্রেট, প্রোটিন এবং ফ্যাটের সুষম বণ্টন থাকতে হবে। আমাদের দেশের খাবারে ভাতের আধিক্য বেশি থাকে, যা ওজন বাড়ার অন্যতম প্রধান কারণ। ওজন কমাতে চাইলে ভাতের পরিমাণ কমিয়ে সবজি এবং প্রোটিনের পরিমাণ বাড়াতে হবে।</p>
-    <p>প্রোটিনের উৎস হিসেবে ডিম, মুরগির মাংস, ডাল এবং মাছ খাদ্যতালিকায় রাখা উচিত। এগুলো পেশি গঠনে সাহায্য করে এবং দীর্ঘক্ষণ পেট ভরা রাখে। এছাড়া ফাইবার সমৃদ্ধ খাবার যেমন ওটস, লাল আটা এবং বিভিন্ন মৌসুমী ফল ওজন কমাতে সাহায্য করে। চিনি এবং অতিরিক্ত লবণ জাতীয় খাবার পুরোপুরি বর্জন করা উচিত।</p>
-    <p>খাবার খাওয়ার পাশাপাশি জল পানের গুরুত্ব অনেক। খাওয়ার ৩০ মিনিট আগে জল পান করলে খিদে কম লাগে। রাতে ঘুমানোর অন্তত ২-৩ ঘণ্টা আগে রাতের খাবার শেষ করা উচিত। মনে রাখবেন, ওজন কমানো একটি ধৈর্য্যসাধ্য প্রক্রিয়া। কোনো ক্রাশ ডায়েট না করে দীর্ঘস্থায়ী এবং স্বাস্থ্যকর অভ্যাস গড়ে তোলাই বুদ্ধিমানের কাজ।</p>
-</div>
-<div class="article-card" style="border-left: 5px solid var(--medical-blue);">
-    <h2>সুস্থ হৃদপিণ্ডের জন্য প্রতিদিনের শরীরচর্চা ও জীবনধারা</h2>
-    <p>হৃদরোগ বর্তমানে বিশ্বের অন্যতম প্রধান মৃত্যুঝুঁকি। তবে সঠিক জীবনযাপন এবং খাদ্যাভ্যাসের মাধ্যমে এই ঝুঁকি অনেকটাই কমিয়ে আনা সম্ভব। হার্ট ভালো রাখতে হলে রক্তচাপ এবং কোলেস্টেরল নিয়ন্ত্রণে রাখা সবচেয়ে জরুরি। বাইরের ভাজাপোড়া এবং অতিরিক্ত চর্বিযুক্ত খাবার ধমনীতে ব্লক তৈরি করতে পারে।</p>
-    <p>হার্টের জন্য সবচেয়ে ভালো ব্যায়াম হলো অ্যারোবিক এক্সারসাইজ বা দ্রুত হাঁটা। সপ্তাহে অন্তত ১৫০ মিনিট মাঝারি পরিশ্রমের ব্যায়াম করলে হৃদপিণ্ড শক্তিশালী হয় এবং রক্ত সঞ্চালন বৃদ্ধি পায়। এছাড়া ধূমপান এবং মদ্যপান হৃদপিণ্ডের অপূরণীয় ক্ষতি করে, যা অবিলম্বে ত্যাগ করা উচিত।</p>
-    <p>মানসিক প্রশান্তিও হার্টের স্বাস্থ্যের সাথে সরাসরি জড়িত। রাগ বা অতিরিক্ত উত্তেজনা হৃদস্পন্দন বাড়িয়ে দেয়, যা হার্ট অ্যাটাকের ঝুঁকি তৈরি করে। পর্যাপ্ত বিশ্রাম, সঠিক খাদ্যাভ্যাস এবং নিয়মিত হেলথ চেকআপের মাধ্যমে আপনি আপনার হৃদপিণ্ডকে সচল এবং সুস্থ রাখতে পারেন। আপনার হার্ট আপনার জীবনের ইঞ্জিন, তাই এর যত্নে কোনো আপস করবেন না।</p>
-</div>
-
-
-
-
-
-
-<!-- বিজ্ঞাপন ২ (মাঝখানে) -->
-        <div class="ad-space" style="height: 100px;">বিজ্ঞাপন ২ (আর্টিকেলের মাঝে)</div>
-
-
-
-
-
-
-
-
-<div class="article-card">
-    <h2>ঘুমের গুরুত্ব: কেন প্রতিদিন ৭-৮ ঘণ্টা ঘুমানো জরুরি?</h2>
-    <p>ঘুম কেবল বিশ্রামের জন্য নয়, বরং শরীরের মেরামতের বা হিলিং এর জন্য প্রয়োজনীয় একটি সময়। একজন প্রাপ্তবয়স্ক মানুষের দৈনিক ৭ থেকে ৮ ঘণ্টা নিরবচ্ছিন্ন ঘুমের প্রয়োজন। ঘুমের সময় আমাদের মস্তিষ্ক সারাদিনের তথ্য প্রসেস করে এবং শরীরের কোষগুলো পুনর্গঠিত হয়। পর্যাপ্ত ঘুমের অভাবে আমাদের রোগ প্রতিরোধ ক্ষমতা কমে যায়।</p>
-    <p>দীর্ঘদিন ঘুমের অভাব থাকলে বিষণ্ণতা, স্মৃতিশক্তি হ্রাস এবং স্থূলতার মতো সমস্যা দেখা দেয়। অনিদ্রার কারণে মেটাবলিজম ব্যাহত হয়, যার ফলে খুব দ্রুত ওজন বাড়তে থাকে। এছাড়া যারা কম ঘুমান, তাদের মধ্যে মেজাজ খিটখিটে হওয়া এবং মনঃসংযোগের অভাব লক্ষ্য করা যায়।</p>
-    <p>ভালো ঘুমের জন্য একটি নির্দিষ্ট রুটিন মেনে চলা উচিত। প্রতিদিন একই সময়ে ঘুমাতে যাওয়া এবং ঘুম থেকে ওঠা শরীরকে একটি প্রাকৃতিক ছন্দে নিয়ে আসে। ঘুমের আগে ক্যাফেইন বা কফি জাতীয় পানীয় এড়িয়ে চলা এবং ঘর অন্ধকার ও শান্ত রাখা ভালো ঘুমের জন্য সহায়ক। নিজের শরীরকে সুস্থ রাখতে পর্যাপ্ত ঘুমের কোনো বিকল্প নেই।</p>
-</div>
-<div class="article-card" style="border-left: 5px solid var(--medical-blue);">
-    <h2>ডাবের জল: প্রকৃতির দেওয়া সেরা এনার্জি ড্রিংক</h2>
-    <p>ডাবের জল কেবল তৃষ্ণা মেটানোর পানীয় নয়, এটি পুষ্টিগুণে ভরপুর একটি প্রাকৃতিক ওষুধ। এতে প্রচুর পরিমাণে ইলেকট্রোলাইট, পটাশিয়াম এবং ম্যাগনেসিয়াম রয়েছে যা শরীরের পানিশূন্যতা রোধে অত্যন্ত কার্যকর। বিশেষ করে গরমের দিনে বা ব্যায়ামের পর শরীর যখন ক্লান্ত থাকে, তখন এক গ্লাস ডাবের জল মুহূর্তে শক্তি জোগাতে পারে।</p>
-    <p>কিডনির পাথর প্রতিরোধে ডাবের জল গুরুত্বপূর্ণ ভূমিকা পালন করে। এটি প্রস্রাবের মাধ্যমে শরীরের টক্সিন বের করে দিতে সাহায্য করে। এছাড়া ডাবের জলে কোনো ফ্যাট বা কোলেস্টেরল নেই, তাই এটি হৃদরোগীদের জন্য নিরাপদ। উচ্চ রক্তচাপ নিয়ন্ত্রণে পটাশিয়াম সমৃদ্ধ এই পানীয় অত্যন্ত উপকারী।</p>
-    <p>ত্বকের যত্নেও ডাবের জলের ব্যবহার অনেক পুরনো। এটি সরাসরি ত্বকে লাগালে ব্রণের দাগ দূর হয় এবং ত্বকের আদ্রতা বজায় থাকে। তবে যারা রক্তে উচ্চ পটাশিয়াম বা গুরুতর কিডনি সমস্যায় ভুগছেন, তাদের ডাবের জল খাওয়ার আগে চিকিৎসকের পরামর্শ নেওয়া উচিত। সুস্থ থাকতে কৃত্রিম কোমল পানীয় বর্জন করে ডাবের জল পানের অভ্যাস করুন।</p>
-</div>
-
-
-
-
-
-
-
-
-<!-- বিজ্ঞাপন ২ (মাঝখানে) -->
-        <div class="ad-space" style="height: 100px;">বিজ্ঞাপন ২ (আর্টিকেলের মাঝে)</div>
-
-
-
-
-
-
-
-
-
-
-
-<div class="article-card" style="border-left: 5px solid #e11d48;">
-    <h2>সাদা চিনি: মিষ্টি স্বাদের আড়ালে এক ভয়াবহ মরণব্যাধি</h2>
-    <p>চিনিকে বর্তমানে আধুনিক চিকিৎসা বিজ্ঞানে 'হোয়াইট পয়জন' বা সাদা বিষ বলা হয়। অতিরিক্ত চিনি খাওয়ার ফলে শরীরে ক্যালোরির পরিমাণ বাড়ে কিন্তু কোনো পুষ্টি পাওয়া যায় না। এটি সরাসরি ইনসুলিন রেজিস্ট্যান্স তৈরি করে, যা টাইপ-২ ডায়াবেটিসের প্রধান কারণ। আমরা অজান্তেই চা, মিষ্টি বা কোল্ড ড্রিংকসের মাধ্যমে প্রচুর চিনি গ্রহণ করি যা লিভারে চর্বি জমায়।</p>
-    <p>চিনি খাওয়ার ফলে আমাদের মস্তিষ্কে ডোপামিন নিঃসৃত হয়, যার ফলে এটি নেশার মতো কাজ করে। এটি কেবল ওজনই বাড়ায় না, বরং শরীরের প্রদাহ বা ইনফ্লামেশন বাড়িয়ে দেয়। ফলে হৃদরোগ এবং ক্যান্সারের ঝুঁকি বহুগুণ বেড়ে যায়। এছাড়া অতিরিক্ত চিনি দাঁতের এনামেল নষ্ট করে এবং ত্বকের অকাল বার্ধক্যের জন্য দায়ী।</p>
-    <p>সুস্থ থাকতে হলে চিনি খাওয়ার পরিমাণ কমিয়ে প্রাকৃতিক মিষ্টি যেমন মধু বা ফলের ওপর নির্ভর করা উচিত। প্রক্রিয়াজাত খাবার বা প্যাকেটের জুস খাওয়ার আগে তাতে কতটুকু চিনি আছে তা যাচাই করে নিন। মনে রাখবেন, আজকের একটু সংযম আপনাকে ভবিষ্যতের বড় কোনো রোগ থেকে বাঁচাতে পারে। চিনি বর্জন করুন, সুস্থ দীর্ঘজীবন লাভ করুন।</p>
-</div>
-<div class="article-card">
-    <h2>জলই জীবন: কেন প্রতিদিন ৩-৪ লিটার জল পান করা উচিত?</h2>
-    <p>আমাদের শরীরের প্রায় ৬০-৭০ শতাংশই হলো জল। তাই শরীরের প্রতিটি কোষকে সচল রাখতে জলের কোনো বিকল্প নেই। জল পানের ফলে শরীরের বিপাক প্রক্রিয়া বা মেটাবলিজম উন্নত হয়, যা ওজন নিয়ন্ত্রণে সহায়ক। সকালে খালি পেটে জল খেলে শরীরের টক্সিন বা বিষাক্ত পদার্থ সহজেই প্রস্রাবের মাধ্যমে বেরিয়ে যায়।</p>
-    <p>শরীরে জলের অভাব হলে ক্লান্তি, মাথাব্যথা এবং কোষ্ঠকাঠিন্যের মতো সমস্যা দেখা দেয়। পর্যাপ্ত জল রক্ত চলাচলে সাহায্য করে এবং শরীরের তাপমাত্রা নিয়ন্ত্রণ করে। উজ্জ্বল ও সুস্থ ত্বকের গোপন রহস্য হলো পর্যাপ্ত জল পান। জল শরীরকে ভেতর থেকে পরিষ্কার রাখে এবং ত্বকের আদ্রতা ধরে রেখে বলিরেখা রোধ করে।</p>
-    <p>অনেকেই তৃষ্ণা না পাওয়া পর্যন্ত জল পান করেন না, যা ভুল। দিনে অন্তত ৮-১০ গ্লাস জল পানের অভ্যাস করুন। তবে খাওয়ার ঠিক আগে বা পরে অতিরিক্ত জল না খেয়ে মাঝখানের সময়ে খাওয়া ভালো। জল খাওয়ার সময় প্লাস্টিকের বোতলের বদলে কাঁচ বা মাটির পাত্র ব্যবহার করা স্বাস্থ্যের জন্য বেশি নিরাপদ।</p>
-</div>
-
-
-
-
-
-
-
-<!-- বিজ্ঞাপন ২ (মাঝখানে) -->
-        <div class="ad-space" style="height: 100px;">বিজ্ঞাপন ২ (আর্টিকেলের মাঝে)</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="article-card" style="border-left: 5px solid var(--health-green);">
-    <h2>ইমিউন সিস্টেম শক্তিশালী করার সেরা ৫টি প্রাকৃতিক খাবার</h2>
-    <p>বর্তমানে মহামারী ও বিভিন্ন ভাইরাসের হাত থেকে বাঁচতে শক্তিশালী রোগ প্রতিরোধ ক্ষমতা বা ইমিউন সিস্টেমের গুরুত্ব সবাই উপলব্ধি করছেন। ওষুধ খেয়ে নয়, বরং খাবারের মাধ্যমেই এই ক্ষমতা বাড়ানো সম্ভব। লেবু, কমলা বা মাল্টার মতো সাইট্রাস ফল ভিটামিন সি-এর সেরা উৎস যা শ্বেত রক্তকণিকা বাড়িয়ে সংক্রমণ প্রতিরোধ করে।</p>
-    <p>আদা এবং রসুন আমাদের রান্নাঘরের অতি পরিচিত দুটি ভেষজ উপাদান। আদা গলা ব্যথা ও প্রদাহ কমায়, অন্যদিকে রসুনের অ্যালিসিন নামক উপাদান শরীরের ইমিউন সিস্টেমকে সক্রিয় রাখে। কাঁচা হলুদ অ্যান্টি-অক্সিডেন্টের চমৎকার উৎস যা পেশির ব্যথা কমাতে এবং ইনফেকশন থেকে রক্ষা পেতে সাহায্য করে।</p>
-    <p>এছাড়া টক দই বা প্রোবায়োটিক খাবার পেটের স্বাস্থ্যের উন্নতি ঘটায়, যা শরীরের সামগ্রিক রোগ প্রতিরোধ ক্ষমতার সাথে জড়িত। কাঠবাদাম বা বিভিন্ন ধরণের বীজ জিংক ও ভিটামিন ই সরবরাহ করে যা শরীরকে শক্তিশালী রাখে। কৃত্রিম সাপ্লিমেন্টের চেয়ে প্রাকৃতিক খাবার নিয়মিত গ্রহণ করলে দীর্ঘস্থায়ী সুস্থতা নিশ্চিত হয়।</p>
-</div>
-<div class="article-card">
-    <h2>সকালের নাস্তা: সারাদিনের কর্মশক্তির মূল উৎস</h2>
-    <p>সকালের নাস্তা হলো দিনের সবচেয়ে গুরুত্বপূর্ণ খাবার। রাতে দীর্ঘ সময় ঘুমের পর আমাদের শরীর শক্তির অভাবে থাকে, যা পূর্ণ করে সকালের খাবার। যারা নিয়মিত সকালের নাস্তা করেন তাদের স্মৃতিশক্তি ভালো থাকে এবং কাজে মনোযোগ দেওয়ার ক্ষমতা বাড়ে। অনেক সময় ওজন কমাতে গিয়ে অনেকে নাস্তা বাদ দেন, যা হিতে বিপরীত হতে পারে।</p>
-    <p>সকালে সুষম নাস্তা না খেলে সারাদিন ক্ষুধা বেশি লাগে এবং অস্বাস্থ্যকর খাবারের প্রতি আকর্ষণ বাড়ে। একটি আদর্শ নাস্তায় কমপ্লেক্স কার্বোহাইড্রেট যেমন লাল আটার রুটি বা ওটস এবং সাথে প্রোটিন হিসেবে ডিম থাকা জরুরি। এটি রক্তে শর্করার মাত্রা স্থিতিশীল রাখতে সাহায্য করে এবং মেজাজ ফুরফুরে রাখে।</p>
-    <p>গবেষণায় দেখা গেছে, যারা নিয়মিত সকালের নাস্তা করেন না তাদের মধ্যে হৃদরোগ ও ডায়াবেটিসের ঝুঁকি বেশি থাকে। তাই ব্যস্ততার অজুহাতে সকালের নাস্তা কখনোই বাদ দেবেন না। মাত্র ১০-১৫ মিনিট সময় বের করে পুষ্টিকর কিছু খাওয়ার অভ্যাস করুন। সুন্দরভাবে দিনটি শুরু করার জন্য সকালের নাস্তার কোনো বিকল্প নেই।</p>
-</div>
-<!-- বিজ্ঞাপন ২ (মাঝখানে) -->
-        <div class="ad-space" style="height: 100px;">বিজ্ঞাপন ২ (আর্টিকেলের মাঝে)</div>
-        <div class="article-card">
-    <h2>5 Scientifically Proven Ways to Lose Weight Fast and Naturally</h2>
-    <p>Losing weight is a journey that requires patience and a proper strategy. According to health experts, the most effective way to shed pounds is by maintaining a calorie deficit. This means you should consume fewer calories than your body burns daily. Start by replacing sugary drinks with water and increasing your protein intake.</p>
-    <p>Intermittent fasting is another powerful tool. By limiting your eating window to 8 hours a day, your body starts using stored fat for energy. Additionally, regular strength training helps build muscle mass, which boosts your metabolism even while you sleep. Use our <b>NutriLife AI</b> BMI calculator to track your progress and stay motivated on your fitness journey.</p>
-</div>
-
-
-
-<div class="article-card" style="border-left: 5px solid #10b981;">
-    <h2>How to Manage Diabetes: Daily Habits for Stable Blood Sugar</h2>
-    <p>Managing diabetes is about more than just avoiding sweets; it’s about a complete lifestyle shift. Keeping your blood sugar levels stable is crucial to preventing long-term complications like kidney disease or vision loss. Fiber-rich foods such as whole grains, legumes, and green leafy vegetables are your best friends in controlling glucose spikes.</p>
-    <p>Physical activity is equally important. Walking for just 30 minutes after a meal can significantly lower blood sugar. Monitoring your weight is also vital, as excess body fat can lead to insulin resistance. Our AI tools provide personalized diet tips to help you maintain a healthy lifestyle while living with diabetes.</p>
-</div>
-
-
-<div class="article-card">
-    <h2>The Ultimate Heart Health Guide: Diet and Exercise Tips</h2>
-    <p>Your heart is the engine of your body, and taking care of it should be your top priority. Cardiovascular diseases are a leading cause of health issues globally, but most heart problems are preventable. A heart-healthy diet includes healthy fats like Omega-3 found in fish and nuts, while avoiding trans fats found in processed snacks.</p>
-    <p>High blood pressure is often called the "silent killer." Reducing salt intake and managing stress through meditation can protect your heart. Staying active helps keep your arteries flexible and improves blood circulation. Remember, a healthy heart starts with a healthy weight. Check your current status with our smart BMI tool today.</p>
-</div>
-
-<div class="article-card" style="border-left: 5px solid #0ea5e9;">
-    <h2>Understanding BMI: Why It Is Essential for Your Fitness Goals</h2>
-    <p>Body Mass Index (BMI) is a simple measurement that uses your height and weight to determine if your weight is healthy. It provides a quick snapshot of whether you are underweight, normal weight, or overweight. Knowing your BMI category helps you set realistic fitness goals, whether you want to gain muscle or lose fat.</p>
-    <p>While BMI doesn't directly measure body fat percentage, it is a highly reliable indicator for most people. Maintaining a healthy BMI reduces the risk of chronic illnesses such as type 2 diabetes and heart disease. At <b>NutriLife AI</b>, we use advanced algorithms to calculate your BMI and offer customized nutrition advice to help you reach your peak physical condition.</p>
-</div>
-
-
-<div class="article-card">
-    <h2>Top 10 Superfoods for a Stronger Immune System</h2>
-    <p>Nutrition is the foundation of health. To keep your immune system strong, you must fuel your body with nutrient-dense superfoods. Citrus fruits like oranges and lemons are packed with Vitamin C, which helps fight infections. Berries, spinach, and ginger are also loaded with antioxidants that protect your cells from damage.</p>
-    <p>Don't forget the importance of hydration. Drinking at least 8 glasses of water a day ensures that nutrients are properly absorbed and toxins are flushed out. A balanced diet, combined with the right information, can change your life. Explore our health blog for more tips on vitamins and minerals that your body needs every day.</p>
-</div>
+            <ul class="nav-links-desktop">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="blog.html" class="active">Health Blogs</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+
+    <!--================
+       MOBILE SIDEBA
+       ================= -->
+
+
+    <div id="sidebar" class="sidebar">
+        <div class="sidebar-header">
+            <a href="index.html" class="logo" style="font-size: 18px;">
+                <img src="favicon.png" alt="Logo" style="width: 30px;">
+                <span><span style="color: var(--secondary);">NutriLife</span><span style="color: var(--primary);">AI</span></span>
+            </a>
+            <i class="fas fa-times close-btn" onclick="toggleSidebar()"></i>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="index.html" onclick="toggleSidebar()"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="about.html" onclick="toggleSidebar()"><i class="fas fa-user-group"></i> About Us</a></li>
+            <li><a href="blog.html" onclick="toggleSidebar()"><i class="fas fa-notes-medical"></i> Health Tips</a></li>
+            <li><a href="privacy.html" onclick="toggleSidebar()"><i class="fas fa-shield-halved"></i> Privacy Policy</a></li>
+            <li><a href="contact.html" onclick="toggleSidebar()"><i class="fas fa-paper-plane"></i> Contact</a></li>
+        </ul>
+        <div style="margin-top: auto; text-align: center; font-size: 12px; color: var(--text-muted);">
+            NutriLife AI &copy; 2026
+        </div>
     </div>
-    <!-- Footer -->
-    <!-- Footer -->
+
+    <!-- HERO HEADER -->
+    <header class="hero">
+        <div class="container">
+            <span class="hero-badge"><i class="fas fa-heartbeat"></i> Health & Wellness Knowledge Hub</span>
+            <h1>Science-Backed Health Tips</h1>
+            <p>Explore expert articles on weight management, nutrition, cardiology, and healthy lifestyle habits powered by NutriLife AI.</p>
+        </div>
+    </header>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="container">
+        <!-- CONTROLS & SEARCH BAR -->
+        <div class="blog-controls">
+            <div class="controls-card">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Search health articles, topics, or keywords..." onkeyup="filterBlogs()">
+                </div>
+                <div class="category-buttons" id="categoryContainer">
+                    <button class="cat-btn active" onclick="filterCategory('All')">All</button>
+                    <button class="cat-btn" onclick="filterCategory('Weight Loss')">Weight Loss</button>
+                    <button class="cat-btn" onclick="filterCategory('Nutrition')">Nutrition</button>
+                    <button class="cat-btn" onclick="filterCategory('Mental Health')">Mental Health</button>
+                    <button class="cat-btn" onclick="filterCategory('Disease Prevention')">Disease Prevention</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- DYNAMIC BLOG GRID -->
+        <div class="blog-grid" id="blogGrid">
+            <!-- Dynamic cards rendered via JS -->
+        </div>
+
+        <!-- NO RESULTS FOUND -->
+        <div class="no-results" id="noResults">
+            <i class="fas fa-search-minus"></i>
+            <h3>No Articles Found</h3>
+            <p>We couldn't find any articles matching your query. Try searching with different keywords.</p>
+        </div>
+    </main>
+
+    <!-- ARTICLE READING MODAL -->
+    <div class="modal" id="articleModal">
+        <div class="modal-content">
+            <div class="modal-close-btn" onclick="closeModal()">
+                <i class="fas fa-times"></i>
+            </div>
+            <img id="modalImg" class="modal-hero-img" src="" alt="Blog Cover">
+            <div class="modal-body">
+                <span id="modalCategory" class="modal-category"></span>
+                <h2 id="modalTitle" class="modal-title"></h2>
+                <div class="modal-meta">
+                    <span id="modalDate"><i class="far fa-calendar-alt"></i> </span>
+                    <span id="modalReadTime"><i class="far fa-clock"></i> </span>
+                </div>
+                <div id="modalText" class="modal-text"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ========================
+               Footer
+    ========================== -->
+    
+    
     <footer>
         <div class="footer-grid">
             <div>
-                <h4>NutriLife AI</h4>
+                
+                <h4>
+                    NutriLife
+                </h4>
+
                 <p>Providing cutting-edge AI health solutions to help you live a smarter and healthier life. Accuracy and privacy are our top priorities.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61586716636762"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/8801894820513"><i class="fab fa-whatsapp"></i></a>
-                    <a href="mailto:abdullahalahadkafi@gmail.com"> <i class="fas fa-envelope"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61586716636762" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/8801894820513" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:contact.alkafi@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
             <div>
                 <h4>Quick Access</h4>
-                <a href="index.html">Home</a>
-                <a href="blog.html">Health Blog</a>
-                <a href="about.html">About Project</a>
+                <a href="blog.html">Health Blogs</a>
+                <a href="about.html">About US</a>
                 <a href="privacy.html">Privacy & Policy</a>
             </div>
             <div>
                 <h4>Support & Contact</h4>
-                <p>Email: abdullahalahadkafi@gmail.com</p>
+                <p>Email: contact.alkafi@gmail.com</p>
                 <p>Location: Chattogram, Bangladesh</p>
                 <p>Phone: +8801894820513</p>
             </div>
         </div>
+
         <div style="text-align: center; border-top: 1px solid #334155; padding-top: 25px; margin-top: 40px; font-size: 15px; color: #8695aa;">
-            &copy; 2026 NutriLife AI<br>Designed & Developed by <a href="https://www.facebook.com/profile.php?id=61564242167643" style="color: #00a750;text-decoration: none;font-weight: bold;">Kafi Ahad</a> (Founder of NutriLife AI)<br>HSC Student & Ethical Hacking Enthusiast
+            <div class="developer">
+                 &copy; 2026 NutriLife AI<br>Designed & Developed by <a href="https://www.facebook.com/ekafiabdullah" target="_blank" >Kafi Abdullah</a>
+            </div>
         </div>
     </footer>
+
+    <!-- EXTERNAL JS DATA FILE -->
+    <script src="blogs.js"></script>
+
+    <!-- CORE LOGIC & INTERACTION SCRIPT -->
     <script>
+        let currentCategory = 'All';
+
+        // Toggle Sidebar Navigation
         function toggleSidebar() {
-            document.getElementById('sidebar').classList.toggle('active');
-            document.getElementById('overlay').classList.toggle('active');
+            const sidebar = document.getElementById('sidebar');
+            const overlay = document.getElementById('overlay');
+            sidebar.classList.toggle('active');
+            overlay.classList.toggle('active');
         }
+
+        // Render Blogs dynamically from blogs.js
+        function renderBlogs(data) {
+            const grid = document.getElementById('blogGrid');
+            const noResults = document.getElementById('noResults');
+            grid.innerHTML = '';
+
+            if (!data || data.length === 0) {
+                noResults.style.display = 'block';
+                return;
+            } else {
+                noResults.style.display = 'none';
+            }
+
+            data.forEach(blog => {
+                const card = document.createElement('article');
+                card.className = 'blog-card';
+                card.onclick = () => openModal(blog.id);
+
+                card.innerHTML = `
+                    <div class="card-img-wrapper">
+                        <img src="${blog.image}" alt="${blog.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80'">
+                        <span class="card-badge">${blog.category}</span>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-meta">
+                            <span><i class="far fa-calendar-alt"></i> ${blog.date}</span>
+                            <span><i class="far fa-clock"></i> ${blog.readTime}</span>
+                        </div>
+                        <h3 class="card-title">${blog.title}</h3>
+                        <p class="card-excerpt">${blog.excerpt}</p>
+                        <div class="card-footer">
+                            <span>Read Article</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Filter by Category
+        function filterCategory(cat) {
+            currentCategory = cat;
+            
+            // Update UI Active State for Buttons
+            const buttons = document.querySelectorAll('.cat-btn');
+            buttons.forEach(btn => {
+                if (btn.innerText.trim() === cat) {
+                    btn.classList.add('active');
+                } else {
+                    btn.classList.remove('active');
+                }
+            });
+
+            applyFilters();
+        }
+
+        // Filter by Search Query & Category
+        function filterBlogs() {
+            applyFilters();
+        }
+
+        function applyFilters() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+
+            const filtered = blogsData.filter(blog => {
+                const matchesCategory = (currentCategory === 'All') || (blog.category.toLowerCase() === currentCategory.toLowerCase());
+                const matchesQuery = blog.title.toLowerCase().includes(query) || 
+                                     blog.excerpt.toLowerCase().includes(query) ||
+                                     blog.category.toLowerCase().includes(query);
+                return matchesCategory && matchesQuery;
+            });
+
+            renderBlogs(filtered);
+        }
+
+        // Article Modal Open & Close Logic
+        function openModal(id) {
+            const blog = blogsData.find(b => b.id === id);
+            if (!blog) return;
+
+            document.getElementById('modalImg').src = blog.image;
+            document.getElementById('modalCategory').innerText = blog.category;
+            document.getElementById('modalTitle').innerText = blog.title;
+            document.getElementById('modalDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${blog.date}`;
+            document.getElementById('modalReadTime').innerHTML = `<i class="far fa-clock"></i> ${blog.readTime}`;
+            document.getElementById('modalText').innerHTML = blog.content;
+
+            const modal = document.getElementById('articleModal');
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Lock background scroll
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('articleModal');
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto'; // Unlock background scroll
+        }
+
+        // Close modal when clicking outside content
+        window.onclick = function(event) {
+            const modal = document.getElementById('articleModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // Initial Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderBlogs(blogsData);
+        });
     </script>
 </body>
 </html>
