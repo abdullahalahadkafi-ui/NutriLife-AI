@@ -1,0 +1,14 @@
+// NutriLife AI Firebase setup reference
+// This project uses the Firebase browser CDN modules directly because it is deployed as a static site.
+// If you later move to a bundler (Vite/npm), these are the equivalent packages:
+// npm install firebase
+//
+// Used modules:
+// firebase/app
+// firebase/auth
+// firebase/firestore
+// firebase/storage
+// firebase/analytics
+//
+// The shared Firebase config lives in firebase-config.js.
+// Do NOT put Firebase Admin SDK credentials/service-account JSON in this public project.

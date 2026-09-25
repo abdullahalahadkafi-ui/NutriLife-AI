@@ -1,0 +1,5 @@
+<!-- Firebase integration for the static Render deployment -->
+<!-- firebase-app.js initializes Auth, Firestore, Storage and optional Analytics. -->
+<!-- blog.html loads blog-app.js, which reads only published posts from Firestore. -->
+<!-- admin.html loads admin.js, which requires Firebase Auth + an /admins/{uid} document. -->
+<!-- The Firebase Web config is intentionally public; access control is enforced by Security Rules. -->

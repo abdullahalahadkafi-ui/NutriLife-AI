@@ -4,8 +4,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NutriLife AI - Health Tips & Nutrition Blog</title>
+    <meta name="description" content="Science-backed health, nutrition, wellness, weight management, and lifestyle articles from NutriLife AI.">
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="canonical" href="https://nutrilife-ai.onrender.com/blog.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="NutriLife AI | Health Tips & Nutrition Blog">
+    <meta property="og:description" content="Science-backed health, nutrition, wellness, and lifestyle articles from NutriLife AI.">
+    <meta property="og:url" content="https://nutrilife-ai.onrender.com/blog.html">
+    <meta property="og:image" content="https://nutrilife-ai.onrender.com/cover.jpg">
+    <script type="application/ld+json">
+    {
+      "@context":"https://schema.org",
+      "@type":"Blog",
+      "name":"NutriLife AI Health Blog",
+      "url":"https://nutrilife-ai.onrender.com/blog.html",
+      "description":"Science-backed health, nutrition, wellness, and lifestyle articles from NutriLife AI."
+    }
+    </script>
     <link rel="apple-touch-icon" href="favicon.png">
     
     <!-- Google Fonts -->
@@ -18,6 +34,9 @@
 
     <style>
         :root {
+            --glass-bg: rgba(255, 255, 255, 0.92);
+            --glass-border: rgba(226, 232, 240, 0.8);
+            --dark: #0f172a;
             --primary: #00a750;
             --primary-dark: #008640;
             --primary-light: #e6f6ec;
@@ -797,17 +816,19 @@
             <div class="controls-card">
                 <div class="search-box">
                     <i class="fas fa-search"></i>
-                    <input type="text" id="searchInput" placeholder="Search health articles, topics, or keywords..." onkeyup="filterBlogs()">
+                    <input type="text" id="searchInput" placeholder="Search health articles, topics, or keywords...">
                 </div>
                 <div class="category-buttons" id="categoryContainer">
-                    <button class="cat-btn active" onclick="filterCategory('All')">All</button>
-                    <button class="cat-btn" onclick="filterCategory('Weight Loss')">Weight Loss</button>
-                    <button class="cat-btn" onclick="filterCategory('Nutrition')">Nutrition</button>
-                    <button class="cat-btn" onclick="filterCategory('Mental Health')">Mental Health</button>
-                    <button class="cat-btn" onclick="filterCategory('Disease Prevention')">Disease Prevention</button>
+                    <button class="cat-btn active" data-category="All">All</button>
+                    <button class="cat-btn" data-category="Weight Loss">Weight Loss</button>
+                    <button class="cat-btn" data-category="Nutrition">Nutrition</button>
+                    <button class="cat-btn" data-category="Mental Health">Mental Health</button>
+                    <button class="cat-btn" data-category="Disease Prevention">Disease Prevention</button>
                 </div>
             </div>
         </div>
+
+        <div id="blogStatus" style="display:none; margin:0 0 24px; padding:14px 18px; border-radius:14px; background:#fff; border:1px solid #e2e8f0; color:#475569;"></div>
 
         <!-- DYNAMIC BLOG GRID -->
         <div class="blog-grid" id="blogGrid">
@@ -825,9 +846,9 @@
     <!-- ARTICLE READING MODAL -->
     <div class="modal" id="articleModal">
         <div class="modal-content">
-            <div class="modal-close-btn" onclick="closeModal()">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Close article">
                 <i class="fas fa-times"></i>
-            </div>
+            </button>
             <img id="modalImg" class="modal-hero-img" src="" alt="Blog Cover">
             <div class="modal-body">
                 <span id="modalCategory" class="modal-category"></span>
@@ -856,8 +877,8 @@
 
                 <p>Providing cutting-edge AI health solutions to help you live a smarter and healthier life. Accuracy and privacy are our top priorities.</p>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61586716636762" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                    <a href="https://wa.me/8801894820513" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    <a href="https://www.facebook.com/profile.php?id=61586716636762" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/8801894820513" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp"></i></a>
                     <a href="mailto:contact.alkafi@gmail.com"><i class="fas fa-envelope"></i></a>
                 </div>
             </div>
@@ -877,136 +898,27 @@
 
         <div style="text-align: center; border-top: 1px solid #334155; padding-top: 25px; margin-top: 40px; font-size: 15px; color: #8695aa;">
             <div class="developer">
-                 &copy; 2026 NutriLife AI<br>Designed & Developed by <a href="https://www.facebook.com/ekafiabdullah" target="_blank" >Kafi Abdullah</a>
+                 &copy; 2026 NutriLife AI<br>Designed & Developed by <a href="https://www.facebook.com/ekafiabdullah" target="_blank" rel="noopener noreferrer" >Kafi Abdullah</a>
             </div>
         </div>
     </footer>
 
-    <!-- EXTERNAL JS DATA FILE -->
-    <script src="blogs.js"></script>
+    <!-- Firebase + Blog App -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+    <script type="module" src="blog-app.js"></script>
 
-    <!-- CORE LOGIC & INTERACTION SCRIPT -->
     <script>
-        let currentCategory = 'All';
-
-        // Toggle Sidebar Navigation
         function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            const overlay = document.getElementById('overlay');
-            sidebar.classList.toggle('active');
-            overlay.classList.toggle('active');
+            document.getElementById('sidebar')?.classList.toggle('active');
+            document.getElementById('overlay')?.classList.toggle('active');
         }
-
-        // Render Blogs dynamically from blogs.js
-        function renderBlogs(data) {
-            const grid = document.getElementById('blogGrid');
-            const noResults = document.getElementById('noResults');
-            grid.innerHTML = '';
-
-            if (!data || data.length === 0) {
-                noResults.style.display = 'block';
-                return;
-            } else {
-                noResults.style.display = 'none';
-            }
-
-            data.forEach(blog => {
-                const card = document.createElement('article');
-                card.className = 'blog-card';
-                card.onclick = () => openModal(blog.id);
-
-                card.innerHTML = `
-                    <div class="card-img-wrapper">
-                        <img src="${blog.image}" alt="${blog.title}" loading="lazy" onerror="this.src='https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=800&q=80'">
-                        <span class="card-badge">${blog.category}</span>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-meta">
-                            <span><i class="far fa-calendar-alt"></i> ${blog.date}</span>
-                            <span><i class="far fa-clock"></i> ${blog.readTime}</span>
-                        </div>
-                        <h3 class="card-title">${blog.title}</h3>
-                        <p class="card-excerpt">${blog.excerpt}</p>
-                        <div class="card-footer">
-                            <span>Read Article</span>
-                            <i class="fas fa-arrow-right"></i>
-                        </div>
-                    </div>
-                `;
-                grid.appendChild(card);
-            });
-        }
-
-        // Filter by Category
-        function filterCategory(cat) {
-            currentCategory = cat;
-            
-            // Update UI Active State for Buttons
-            const buttons = document.querySelectorAll('.cat-btn');
-            buttons.forEach(btn => {
-                if (btn.innerText.trim() === cat) {
-                    btn.classList.add('active');
-                } else {
-                    btn.classList.remove('active');
-                }
-            });
-
-            applyFilters();
-        }
-
-        // Filter by Search Query & Category
-        function filterBlogs() {
-            applyFilters();
-        }
-
-        function applyFilters() {
-            const query = document.getElementById('searchInput').value.toLowerCase().trim();
-
-            const filtered = blogsData.filter(blog => {
-                const matchesCategory = (currentCategory === 'All') || (blog.category.toLowerCase() === currentCategory.toLowerCase());
-                const matchesQuery = blog.title.toLowerCase().includes(query) || 
-                                     blog.excerpt.toLowerCase().includes(query) ||
-                                     blog.category.toLowerCase().includes(query);
-                return matchesCategory && matchesQuery;
-            });
-
-            renderBlogs(filtered);
-        }
-
-        // Article Modal Open & Close Logic
-        function openModal(id) {
-            const blog = blogsData.find(b => b.id === id);
-            if (!blog) return;
-
-            document.getElementById('modalImg').src = blog.image;
-            document.getElementById('modalCategory').innerText = blog.category;
-            document.getElementById('modalTitle').innerText = blog.title;
-            document.getElementById('modalDate').innerHTML = `<i class="far fa-calendar-alt"></i> ${blog.date}`;
-            document.getElementById('modalReadTime').innerHTML = `<i class="far fa-clock"></i> ${blog.readTime}`;
-            document.getElementById('modalText').innerHTML = blog.content;
-
-            const modal = document.getElementById('articleModal');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Lock background scroll
-        }
-
         function closeModal() {
-            const modal = document.getElementById('articleModal');
-            modal.classList.remove('active');
-            document.body.style.overflow = 'auto'; // Unlock background scroll
+            document.getElementById('articleModal')?.classList.remove('active');
+            document.body.style.overflow = 'auto';
         }
-
-        // Close modal when clicking outside content
-        window.onclick = function(event) {
+        window.addEventListener('click', (event) => {
             const modal = document.getElementById('articleModal');
-            if (event.target === modal) {
-                closeModal();
-            }
-        }
-
-        // Initial Initialization
-        document.addEventListener('DOMContentLoaded', () => {
-            renderBlogs(blogsData);
+            if (event.target === modal) closeModal();
         });
     </script>
 </body>

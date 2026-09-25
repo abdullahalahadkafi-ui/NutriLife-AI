@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow,noarchive">
+  <title>NutriLife AI — Admin</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <section id="loginView" class="auth-card">
+      <div class="brand"><img src="favicon.png" alt="NutriLife AI"><div><strong>NutriLife AI</strong><span>Secure Blog Admin</span></div></div>
+      <h1>Sign in</h1>
+      <p class="muted">Only an approved Firebase admin account can manage articles.</p>
+      <form id="loginForm" autocomplete="on">
+        <label>Email<input id="email" type="email" autocomplete="username" required></label>
+        <label>Password<input id="password" type="password" autocomplete="current-password" minlength="6" required></label>
+        <button class="btn primary" type="submit"><i class="fas fa-right-to-bracket"></i> Sign in</button>
+        <p id="loginError" class="error" role="alert"></p>
+      </form>
+      <a class="back-link" href="blog.html">← Back to website</a>
+    </section>
+
+    <section id="deniedView" class="auth-card hidden">
+      <div class="icon-danger"><i class="fas fa-shield-halved"></i></div>
+      <h1>Access denied</h1>
+      <p class="muted">This Firebase account is authenticated but is not listed as a NutriLife administrator.</p>
+      <button id="deniedLogout" class="btn secondary">Sign out</button>
+    </section>
+
+    <section id="appView" class="hidden">
+      <header class="topbar">
+        <div class="brand"><img src="favicon.png" alt="NutriLife AI"><div><strong>NutriLife AI</strong><span>Blog Administration</span></div></div>
+        <div class="top-actions"><span id="adminEmail" class="admin-email"></span><a href="blog.html" target="_blank" class="btn ghost"><i class="fas fa-external-link-alt"></i> View site</a><button id="logoutBtn" class="btn secondary"><i class="fas fa-right-from-bracket"></i> Logout</button></div>
+      </header>
+
+      <main class="dashboard">
+        <section class="stats-grid">
+          <div class="stat"><span>Total</span><strong id="statTotal">0</strong></div>
+          <div class="stat"><span>Published</span><strong id="statPublished">0</strong></div>
+          <div class="stat"><span>Drafts</span><strong id="statDrafts">0</strong></div>
+          <div class="stat"><span>Categories</span><strong id="statCategories">0</strong></div>
+        </section>
+
+        <section class="workspace">
+          <aside class="posts-panel">
+            <div class="panel-head"><div><h2>Articles</h2><p>Manage your blog posts.</p></div><button id="newPostBtn" class="btn primary small"><i class="fas fa-plus"></i> New</button></div>
+            <input id="postSearch" class="search" type="search" placeholder="Search articles…">
+            <div id="postList" class="post-list"></div>
+          </aside>
+
+          <section class="editor-panel">
+            <div class="panel-head editor-head"><div><h2 id="editorHeading">Create article</h2><p id="saveState">Changes are only saved when you click a save button.</p></div><div class="editor-actions"><button id="previewBtn" class="btn ghost small"><i class="fas fa-eye"></i> Preview</button><button id="saveDraftBtn" class="btn secondary small"><i class="fas fa-floppy-disk"></i> Save draft</button><button id="deleteBtn" class="btn danger small"><i class="fas fa-trash"></i> Delete</button><button id="publishBtn" class="btn primary small"><i class="fas fa-paper-plane"></i> Publish</button><button id="importBtn" class="btn ghost small" title="One-time migration of the current local blogs.js"><i class="fas fa-file-import"></i> Import old blogs</button></div></div>
+
+            <form id="postForm" class="editor-form">
+              <input type="hidden" id="postId">
+              <div class="form-grid two">
+                <label>Title<input id="title" maxlength="140" required placeholder="e.g. 7 evidence-based habits for better sleep"></label>
+                <label>Slug<input id="slug" maxlength="120" required placeholder="better-sleep-habits"></label>
+              </div>
+              <div class="form-grid three">
+                <label>Category<select id="category" required><option>Nutrition</option><option>Weight Loss</option><option>Mental Health</option><option>Disease Prevention</option><option>Cardiology</option><option>Wellness</option><option>Fitness</option><option>General Health</option></select></label>
+                <label>Read time<select id="readTime"><option>3 min read</option><option selected>5 min read</option><option>7 min read</option><option>10 min read</option><option>12 min read</option></select></label>
+                <label>Publish date<input id="publishDate" type="date" required></label>
+              </div>
+              <label>Excerpt <span class="counter" id="excerptCounter">0/220</span><textarea id="excerpt" maxlength="220" rows="3" placeholder="A concise description shown on the blog card and useful for search previews."></textarea></label>
+
+              <div class="media-row">
+                <div class="cover-preview" id="coverPreview"><span><i class="fas fa-image"></i> Cover preview</span></div>
+                <div class="media-controls">
+                  <label>Cover image URL<input id="imageUrl" type="url" placeholder="https://…"></label>
+                  <label>Or upload image<input id="imageFile" type="file" accept="image/jpeg,image/png,image/webp,image/avif"></label>
+                  <small>Recommended: 1200×630 or similar. Max 5 MB.</small>
+                </div>
+              </div>
+
+              <div class="editor-block">
+                <div class="label-row"><label>Article content</label><span class="counter" id="contentCounter">0 words</span></div>
+                <div class="toolbar" id="toolbar">
+                  <button type="button" data-cmd="formatBlock" data-value="p">P</button><button type="button" data-cmd="formatBlock" data-value="h2">H2</button><button type="button" data-cmd="formatBlock" data-value="h3">H3</button><button type="button" data-cmd="bold"><b>B</b></button><button type="button" data-cmd="italic"><i>I</i></button><button type="button" data-cmd="underline"><u>U</u></button><button type="button" data-cmd="insertUnorderedList">• List</button><button type="button" data-cmd="insertOrderedList">1. List</button><button type="button" id="quoteBtn">“ Quote</button><button type="button" id="linkBtn"><i class="fas fa-link"></i></button><button type="button" id="clearBtn"><i class="fas fa-eraser"></i></button>
+                </div>
+                <div id="contentEditor" class="content-editor" contenteditable="true" data-placeholder="Write a clear, structured, reader-friendly health article here…"></div>
+              </div>
+
+              <div class="form-grid two">
+                <label>SEO title<input id="seoTitle" maxlength="70" placeholder="Optional — defaults to article title"></label>
+                <label>SEO description<input id="seoDescription" maxlength="160" placeholder="Optional — defaults to excerpt"></label>
+              </div>
+              <label class="switch-row"><input id="published" type="checkbox"><span class="switch"></span><span><strong>Published</strong><small>Published posts are visible on the public blog.</small></span></label>
+              <div id="editorError" class="error" role="alert"></div>
+            </form>
+          </section>
+        </section>
+      </main>
+    </section>
+  </div>
+
+  <div id="toast" class="toast" role="status"></div>
+  <div id="previewModal" class="preview-modal hidden"><div class="preview-card"><button id="closePreview" class="preview-close" aria-label="Close"><i class="fas fa-times"></i></button><div id="previewContent"></div></div></div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/3.2.6/purify.min.js"></script>
+  <script src="legacy-blogs.js"></script>
+  <script type="module" src="admin.js"></script>
+</body>
+</html>

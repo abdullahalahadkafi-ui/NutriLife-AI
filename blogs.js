@@ -1,6 +1,6 @@
 // NutriLife AI - Dynamic Blog Data Store
 // Easily add, edit, or remove blogs by modifying this array.
-
+//
 const blogsData = [
   {
     id: "weight-loss-guide",
